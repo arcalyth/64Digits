@@ -1,4 +1,6 @@
 To Install 64Digits:
+	Install Yii Framework somewhere outside of the repo. (Recommended to be in ../yii)
+	Modify index.php to point to that Yii install
 	cp protected/config/main-copy.php protected/config/main.php;
 
 Alter the `db` component to reflect your database.
