@@ -1,0 +1,1 @@
+You must move the /protected/config/main-copy.php to /protected/config/main.php and re-configure it to your environment first.
