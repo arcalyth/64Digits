@@ -1,0 +1,7 @@
+To Install 64Digits:
+	cp protected/config/main-copy.php protected/config/main.php;
+
+Alter the `db` component to reflect your database.
+
+Import the fresh.sql file (Not yet created)
+	
