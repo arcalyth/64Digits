@@ -9,11 +9,7 @@
 	<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="<?php
-
-if (Yii::app()->user->isGuest) echo "not-logged-in";
-
-?>">
+<body class="<?php if (Yii::app()->user->isGuest) echo "not-logged-in";?>">
 
 <div id="top-bar">
 	<div class="bar-inner">
@@ -55,11 +51,10 @@ if (Yii::app()->user->isGuest) echo "not-logged-in";
 		<?php echo $content; ?>
 	</div>
 </div>
-<!--
+
 <footer>
     <p>Here goes footer stuff and stuff</p>
 </footer>
--->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>

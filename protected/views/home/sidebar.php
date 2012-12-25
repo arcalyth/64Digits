@@ -6,30 +6,29 @@
 			'data' => array(
 						array(	"type"=>"blog",
 								"title"=>"Hectocosm",
-								"time"=>time(),
+								"time"=>time()-rand(0,15000),
 								"users"=>array(
-											array("sirxemic","ChIkEn","Cesque"), //These eventually will be ID's
-											array("sirxemic")
+											array(2,1,3)
 										),
-								"format"=>"%u commented on %u's music piece %t"
+								"format"=>"%u commented %t"
 						),
 						array(	"type"=>"blog",
 								"title"=>"S4D 2012 - UPDATE",
-								"time"=>time(),
+								"time"=>time()-rand(0,15000),
 								"users"=>array(
-											array("sirxemic"),
-											array("sirxemic")
+											array(2),
+											array(2)
 										),
-								"format"=>"%u commented on %u's music piece %t"
+								"format"=>"%u commented %t"
 						),
 						array(	"type"=>"blog",
 								"title"=>"Im out (again)",
-								"time"=>time(),
+								"time"=>time()-rand(0,15000),
 								"users"=>array(
-											array("sirxemic","ChIkEn"),
-											array("cyrusroberto")
+											array(2,1),
+											array(4)
 										),
-								"format"=>"%u commented on %u's music piece %t"
+								"format"=>"%u commented %t"
 						)
 			)  
 		));
