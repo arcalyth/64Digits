@@ -9,5 +9,11 @@ To Install 64Digits:
 		Most likely, you'll need to remove one set of ../ from the path.
 	3) cp protected/config/main-copy.php protected/config/main.php; 
 		Configure the main.php file with your own database credentials (component -> db)
-	4) Import the fresh.sql file
-		
+	4) cp protected/config/console-copy.php protected/config/console.php;
+		Configure this file with the same database credentials.
+	5) cd protected/; ./yiic migrate
+		Will list all migrations available. Use the command ./yiic migrate up <X> to upgrade database
+
+
+Migrations documentation:
+	http://www.yiiframework.com/doc/guide/1.1/en/database.migration
