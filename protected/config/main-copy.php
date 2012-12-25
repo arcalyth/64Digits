@@ -37,10 +37,17 @@ return array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,
 		),
+		
 		'urlManager'=>array(
 		    'urlFormat'=>'path',
 			'showScriptName'=>false,
-			 'caseSensitive'=>false,        
+			'caseSensitive'=>false,       
+			'rules'=>array(
+				'user/settings' => 'user/settings', /* Static pages must be defined here for the User controller*/
+				'user/inbox' => 'user/inbox',
+				'user/filemanager' => 'user/filemanager',
+				'user/<action>/*' => 'user/view/user/<action>', /*Redirect for a user page.*/
+			)
 		),
 		
 		'db'=>array(

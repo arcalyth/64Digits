@@ -40,20 +40,20 @@
 								return "<u>A ghost</u>";
 							break;
 							case 1:
-								return "<a href='#'>
+								return "<a href='".Yii::app()->request->baseUrl."/user/".$user_group[0]->username."'>
 											<span class='tiny-avatar'>
 												<img title='".$user_group[0]->username."' src='".$user_group[0]->avatar_location."' />
 											</span> ".$user_group[0]->username.
 										"</a>";
 							break;
 							case 2:
-								return "<a href='#'>
+								return "<a href='".Yii::app()->request->baseUrl."/user/".$user_group[0]->username."'>
 											<span class='tiny-avatar'>
 												<img title='".$user_group[0]->username."' src='".$user_group[0]->avatar_location."' />
 											</span> ".$user_group[0]->username.
 										"</a>".
 										" and ".
-										"<a href='#'>
+										"<a href='".Yii::app()->request->baseUrl."/user/".$user_group[1]->username."'>
 											<span class='tiny-avatar'>
 												<img title='".$user_group[1]->username."' src='".$user_group[1]->avatar_location."' />
 											</span> ".$user_group[1]->username.
@@ -62,7 +62,11 @@
 							case 3:	case 4:	case 5: case 6:
 								$data = "";
 								foreach ($user_group as $user){
-									$data .= '<a href="#"><span class="tiny-avatar"><img title="'.$user->username.'" src="'.$user->avatar_location.'"></span></a>';
+									$data .= "<a href='".Yii::app()->request->baseUrl."/user/".$user->username."'>
+													<span class='tiny-avatar'>
+														<img title='".$user->username."' src='".$user->avatar_location."'>
+													</span>
+												</a>";
 								}
 								
 								$data .= "&nbsp;".count($user_group)." users"."";
@@ -74,11 +78,11 @@
 								$max = 6;
 								foreach ($user_group as $user){
 									if ($max <= 0){break;}
-									$data .= '<a href="#">
-												<span class="tiny-avatar">
-													<img title="'.$user->username.'" src="'.$user->avatar_location.'">
-												</span>
-											</a>';
+									$data .= "<a href='".Yii::app()->request->baseUrl."/user/".$user->username."'>
+													<span class='tiny-avatar'>
+														<img title='".$user->username."' src='".$user->avatar_location."'>
+													</span>
+												</a>";
 									$max--;
 								}
 								

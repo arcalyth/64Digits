@@ -17,4 +17,8 @@ class UserController extends Controller
 		$this->render('index');
 	}
 	
+	public function actionView(){
+		$this->render('index');
+	}
+	
 }
