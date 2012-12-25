@@ -8,6 +8,7 @@
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'64Digits',
+	'defaultController' => 'home',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -52,7 +53,7 @@ return array(
 		
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
-			'errorAction'=>'site/error',
+			'errorAction'=>'home/error',
 		),
 		'log'=>array(
 			'class'=>'CLogRouter',

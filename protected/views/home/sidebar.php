@@ -33,11 +33,13 @@
 						)
 			)  
 		));
+		
 		$this->widget('application.components.Sidebar', array(
 			'sidebar' => "onlineUserSideBar",
 			'data' => array(
 			)
 		));
+		
 		$this->widget('application.components.Sidebar', array(
 			'sidebar' => "newUserSideBar",
 			'data' => array(

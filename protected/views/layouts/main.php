@@ -19,11 +19,11 @@ if (Yii::app()->user->isGuest) echo "not-logged-in";
 	<div class="bar-inner">
         <h1>sixty four digits community</h1>
 		<ul>
-			<li class="active"><a id="logo" href="#"></a></li>
-			<li><a href="#">games</a></li>
-			<li><a href="#">music</a></li>
-			<li><a href="#">art</a></li>
-			<li><a href="#">examples</a></li>
+			<li class="active"><a id="logo" href="<?php echo Yii::app()->request->baseUrl; ?>/"></a></li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/media/games">games</a></li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/media/music">music</a></li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/media/art">art</a></li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/media/examples">examples</a></li>
 		</ul>
 
 		<div id="search-wrapper">
@@ -35,12 +35,12 @@ if (Yii::app()->user->isGuest) echo "not-logged-in";
 <div id="top-bar-sub">
 	<div class="bar-inner">
 		<ul>
-			<li><a href="#">my page</a></li>
-			<li><a href="#">submit</a></li>
-			<li><a class="inbox-link" href="#"><span>inbox</span> <span class="inline-badge">212</span></a></li>
-			<li><a href="#">settings</a></li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/">my page</a></li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/media/submit">submit</a></li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/inbox" class="inbox-link"><span>inbox</span> <span class="inline-badge">212</span></a></li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/settings">settings</a></li>
 			<li class="seperator"></li>
-			<li><a href="#">log out</a></li>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/home/logout">log out</a></li>
 		</ul>
 	</div>
 </div>

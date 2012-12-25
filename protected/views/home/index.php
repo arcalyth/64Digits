@@ -315,7 +315,3 @@
 		<p style="padding-bottom: 100px;">Here would go the news <strong>no one ever reads</strong></p>
 	</div>
 </div>
-
-<?php
-	$this->renderPartial("sidebar");
-?>
