@@ -1,6 +1,6 @@
 <?php
 
-class SiteController extends Controller
+class MediaController extends Controller
 {
 	/**
 	 * This is the default 'index' action that is invoked
@@ -8,6 +8,8 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
+		// renders the view file 'protected/views/site/index.php'
+		// using the default layout 'protected/views/layouts/main.php'
 		$this->render('index');
 	}
 

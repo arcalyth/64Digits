@@ -81,6 +81,8 @@ a:hover {
 	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
 	z-index: 10;
 	font-size: 13px;
+	
+	min-width: 984px;
 }
 
 #top-bar-sub {
@@ -89,6 +91,8 @@ a:hover {
 	background: #888 url(img/something.png) right center no-repeat;
 	z-index: 9;
 	box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+	
+	min-width: 984px;
 }
 
 .bar-inner {
@@ -217,6 +221,7 @@ body > footer {
 }
 #sidebar-wrapper > * {
     margin-left: 10px;
+	min-width: 255px;
 }
 
 .frontpage-section, .section {
