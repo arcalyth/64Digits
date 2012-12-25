@@ -1,318 +1,123 @@
-
-        <div id="frontpage-heads-up" style="background: #000; padding: 80px">
-            <p style="color: #ffd">space for awesome banners announcing events and such</p>
-            <!--<img src="css/img/LOLOL.png">-->
-        </div>
-        
-		<div class="frontpage-section">
-			<div class="section-header">
-				<h1>Latest submissions</h1>
-				<ul class="options">
-					<li><a href="#">games</a></li>
-					<li class="active"><a href="#">music</a></li>
-					<li><a href="#">art</a></li>
-					<li><a href="#">miscellaneous</a></li>
-				</ul>
-				<a class="options dropdown" href="#">friends' &#9660;</a>
+<div id="user-banner" style="height: 130px; border-radius: 0 10px; box-shadow: 0 3px 5px rgba(0,0,0,0.25) inset">
+	<div id="banner-bg" style="background: #fff url(http://www.64digits.com/users/Kilin/ronald_flandre.png.png) 50% 50% no-repeat; background-size: contain; ">
+	</div>
+	<h1>kilin</h1>
+	<!--<header class="invert">
+				<div class="avatar">
+					<img src="http://www.64digits.com/users/Kilin/FlandrePumpkin.png">
+				</div>
+				<h1>Kilin</h1>
+				<small>
+					#1014 - Joined <time>May 26, 2006</time><br>
+					Is a Nekomata<br>
+					Page views: 73,532
+				</small>
+			</header>-->
+</div>
+<div class="blog-section">
+	<div class="section-header">
+		<h1>Kilin's pages</h1>
+		<ul class="options">
+			<li class="active"><a href="#">feed</a></li>
+			<li><a href="#">blog</a></li>
+			<li><a href="#">games (1)</a></li>
+			<li><a href="#">music (16)</a></li>
+			<li><a href="#">art (2)</a></li>
+			<li><a href="#">miscellaneous (4)</a></li>
+		</ul>
+	</div>
+	<div class="section-content">
+		<div class="user-showcase">
+			<div class="user-showcase-game">
+				<img src="http://www.64digits.com/games/5604/TTRPreview.png" alt="The Twilight Realm">
+				<div class="overlay">
+					<h1><a href="#">The Twilight Realm</a></h1>
+					<blockquote>
+						<p>
+							Okay, so this was pretty awesome and omg narwhal.
+						</p>
+						<cite>&mdash; Qwilderus</cite>
+					</blockquote>
+				</div>
+				<!--<p class="description hidden">
+						The Twilight Realm is a parasitic world that steals from its neighboring worlds. Kale was stolen as well, and meets Rai, a veteran who was once in the same place as himself. Together they press on to discover the secrets of the Twilight Realm in hopes of stopping the spread of the plague-like world, and returning home.
+						</p>-->
 			</div>
-            <div class="section-content">
-                <div class="tiled-items-wrapper" data-item-minwidth="260">
-                    <div class="tiled-items-row">
-                                            <div class="tiled-item music-item">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/sirxemic/croxer-cropped.png">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-date">Dec 24</div>
-                                <h1><a href="#">Hectocosm</a></h1>
-                                
-                                <p class="meta">by <a class="link-user " href="#"> sirxemic</a></p>
-                                
-                                <p class="tags">
-                                                                    <span class="tag">Lounge</span>
-                                                                    <span class="tag">Reason</span>
-                                                                    <span class="tag">Uhbik-A</span>
-                                                                    <span class="tag">Nature</span>
-                                                                    <span class="tag">Trance</span>
-                                                                    <span class="tag">Awesome</span>
-                                                                </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item music-item">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/Stevenup7002/stevejune256.png">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-date">Dec 23</div>
-                                <h1><a href="#">Slow Jazz Piece</a></h1>
-                                
-                                <p class="meta">by <a class="link-user " href="#"> Stevenup7002</a></p>
-                                
-                                <p class="tags">
-                                                                    <span class="tag">Jazz</span>
-                                                                </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item music-item">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/Stevenup7002/stevejune256.png">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-date">Dec 22</div>
-                                <h1><a href="#">Upbeat Jazz Piece</a></h1>
-                                
-                                <p class="meta">by <a class="link-user " href="#"> Stevenup7002</a></p>
-                                
-                                <p class="tags">
-                                                                    <span class="tag">Jazz</span>
-                                                                </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item music-item">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/Mega/newav_octave.png">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-date">Dec 21</div>
-                                <h1><a href="#">Echoes</a></h1>
-                                
-                                <p class="meta">by <a class="link-user " href="#"> Mega</a></p>
-                                
-                                <p class="tags">
-                                                                    <span class="tag">Chiptune</span>
-                                                                    <span class="tag">music</span>
-                                                                    <span class="tag">tune</span>
-                                                                    <span class="tag">chip</span>
-                                                                    <span class="tag">famitracker</span>
-                                                                    <span class="tag">nes</span>
-                                                                    <span class="tag">2a03</span>
-                                                                    <span class="tag">vrc6</span>
-                                                                </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item music-item">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/sirxemic/croxer-cropped.png">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-date">Dec 20</div>
-                                <h1><a href="#">Hectocosm</a></h1>
-                                
-                                <p class="meta">by <a class="link-user " href="#"> sirxemic</a></p>
-                                
-                                <p class="tags">
-                                                                    <span class="tag">Lounge</span>
-                                                                    <span class="tag">Reason</span>
-                                                                    <span class="tag">Uhbik-A</span>
-                                                                    <span class="tag">Nature</span>
-                                                                    <span class="tag">Trance</span>
-                                                                    <span class="tag">Awesome</span>
-                                                                </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item music-item">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/Stevenup7002/stevejune256.png">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-date">Dec 19</div>
-                                <h1><a href="#">Slow Jazz Piece</a></h1>
-                                
-                                <p class="meta">by <a class="link-user " href="#"> Stevenup7002</a></p>
-                                
-                                <p class="tags">
-                                                                    <span class="tag">Jazz</span>
-                                                                </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item music-item">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/Stevenup7002/stevejune256.png">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-date">Dec 18</div>
-                                <h1><a href="#">Upbeat Jazz Piece</a></h1>
-                                
-                                <p class="meta">by <a class="link-user " href="#"> Stevenup7002</a></p>
-                                
-                                <p class="tags">
-                                                                    <span class="tag">Jazz</span>
-                                                                </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item music-item">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/Mega/newav_octave.png">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-date">Dec 17</div>
-                                <h1><a href="#">Echoes</a></h1>
-                                
-                                <p class="meta">by <a class="link-user " href="#"> Mega</a></p>
-                                
-                                <p class="tags">
-                                                                    <span class="tag">Chiptune</span>
-                                                                    <span class="tag">music</span>
-                                                                    <span class="tag">tune</span>
-                                                                    <span class="tag">chip</span>
-                                                                    <span class="tag">famitracker</span>
-                                                                    <span class="tag">nes</span>
-                                                                    <span class="tag">2a03</span>
-                                                                    <span class="tag">vrc6</span>
-                                                                </p>
-                            </div>
-                        </div>
-                                        </div>
-                </div>
-            </div>
-		</div>
-		<div class="frontpage-section">
-			<div class="section-header">
-				<h1>Latest blogs</h1>
-				<ul class="options">
-					<li class="active"><a href="#">all</a></li>
-					<li><a href="#">game dev</a></li>
-					<li><a href="#">music dev</a></li>
-					<li><a href="#">art dev</a></li>
-					<li><a href="#">miscellaneous</a></li>
-				</ul>
-				<a class="options dropdown" href="#">all &#9660;</a>
+			<div class="user-showcase-game">
+				<img src="http://www.64digits.com/games/5629/S4Dpreview.png" alt="Ascended - Fight or Flight">
+				<div class="overlay">
+					<h1><a href="#">Ascended - Fight or Flight</a></h1>
+					<blockquote>
+						<p>
+							This is awesome
+						</p>
+						<cite>&mdash; Someone</cite>
+					</blockquote>
+				</div>
+				<!--<p class="description hidden">
+						The Ascended are a group of people chosen to fight each other, but Sapphira is having too many problems with school and her social life when she gets caught in the middle of everything. After a girl named Katarina--another Ascended--befriends her, she learns to accept that in order to survive, she has to kill.
+						</p>-->
 			</div>
-
-            <div class="section-content">
-                <div class="tiled-items-wrapper" data-item-minwidth="360">
-                    <div class="tiled-items-row">
-                                            <div class="tiled-item blog-item pinned">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/CyrusRoberto/Pandora_ForKilinAvvy_80x802.png">
-                            </div>
-                            
-                            <div class="item-inner">
-                                <div class="item-date">Oct 09</div>
-                                <h1><a href="#">S4D 2012 - UPDATE</a></h1>
-
-                                <div class="meta">by <a class="link-user " href="#"> CyrusRoberto</a> &middot; <a href="#">13 comments</a></div>
-                                
-                                <p>
-                                http://www.64digits.com/users/index.php?userid=CyrusRoberto&cmd=comments&id=500864 Alright guys, were about three weeks into the compo. I have an hour before class, and I will be available to answer any questions you may have to hopefull                                </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item blog-item pinned">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/hel/inuyasha/icon3.jpg">
-                            </div>
-                            
-                            <div class="item-inner">
-                                <div class="item-date">Sep 30</div>
-                                <h1><a href="#">currently homeless</a></h1>
-
-                                <div class="meta">by <a class="link-user " href="#"> hel</a> &middot; <a href="#">29 comments</a></div>
-                                
-                                <p>
-                                moving was a botched attempt on several levels. 1) we had a month to find a place to leave. ONE MONTH 2) we were kicked out a week early, instead of on Oct 1, and 3) we never had time to clean up bugs, mold or even sweep in this nasty cabin that now has EVERYTHING we own inside of it. i can't...                                 </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item blog-item ">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/death/Avatar_Death_Fire_eyes_2x.gif">
-                            </div>
-                            
-                            <div class="item-inner">
-                                <div class="item-date">Oct 16</div>
-                                <h1><a href="#">Im out (again)</a></h1>
-
-                                <div class="meta">by <a class="link-user " href="#"> death</a> &middot; <a href="#">7 comments</a></div>
-                                
-                                <p>
-                                You can count me out of the comp. I haven't had any free time to work on any project in weeks. Been working crazy overtime and school is taking up way more time than i expected. My classes are pretty heavy on the homework this semester and the classes require a lot of studying too. I don't...                                 </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item blog-item ">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/eagly/Calvin-making-faces.gif">
-                            </div>
-                            
-                            <div class="item-inner">
-                                <div class="item-date">Oct 15</div>
-                                <h1><a href="#">64 Wolves All Running Amuck</a></h1>
-
-                                <div class="meta">by <a class="link-user " href="#"> eagly</a> &middot; <a href="#">7 comments</a></div>
-                                
-                                <p>
-                                People of 64Digits, I come to you with a new thing to kill some time! If you go on IRC or if you're interested in going on IRC to join #64digits, think about joining #64wolf as well. It's a channel I made to host a bot for the Wolf Game. I thought I'd post this blog with the rules of the...                                </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item blog-item ">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/Kilin/FlandrePumpkin.png">
-                            </div>
-                            
-                            <div class="item-inner">
-                                <div class="item-date">Oct 15</div>
-                                <h1><a href="#">Nine Hours/Drinks Later.... </a></h1>
-
-                                <div class="meta">by <a class="link-user " href="#"> Kilin</a> &middot; <a href="#">13 comments</a></div>
-                                
-                                <p>
-                                "Gotta love humanity's urge to ingest poison for fun." - Charlie Carlo So it's my birthday today, but since I have work and school, we did the celebrations last night. After having dinner and not eating very much of it, we went to the bar to grab a few drinks and leave. My limit is somewhere...                                </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item blog-item ">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/Stevenup7002/stevejune256.png">
-                            </div>
-                            
-                            <div class="item-inner">
-                                <div class="item-date">Oct 15</div>
-                                <h1><a href="#">Jazz, Television etc. </a></h1>
-
-                                <div class="meta">by <a class="link-user " href="#"> Stevenup7002</a> &middot; <a href="#">18 comments</a></div>
-                                
-                                <p>
-                                Hey guys. I've composed some new pieces! Now, I know what you're thinking. "Oh no, not more bloody classical music. When will he realize that we don't like that?", but before you leave the blog out of disgust, I ask you to bear with me for just a moment, as the following two pieces are...                                 </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item blog-item ">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/Panzermancer/ghostavvy1.gif">
-                            </div>
-                            
-                            <div class="item-inner">
-                                <div class="item-date">Oct 14</div>
-                                <h1><a href="#">Leaving, but not at all in a bad way. And not for long.</a></h1>
-
-                                <div class="meta">by <a class="link-user banned" href="#"> Panzermancer</a> &middot; <a href="#">12 comments</a></div>
-                                
-                                <p>
-                                I'm taking a bit of a sabbatical from a lot of my distractions for the next while, including 64Digits. I need to focus more on my artwork, and I feel like I need to take a break from some stuff so I can focus more. Also, my constant posting of teenage romance drama here doesn't really help anyone,...                                </p>
-                            </div>
-                        </div>
-                                            <div class="tiled-item blog-item ">
-                            <div class="avatar">
-                                <img src="http://www.64digits.com/users/Kilin/FlandrePumpkin.png">
-                            </div>
-                            
-                            <div class="item-inner">
-                                <div class="item-date">Oct 13</div>
-                                <h1><a href="#">64Digits To-Do List </a></h1>
-
-                                <div class="meta">by <a class="link-user " href="#"> Kilin</a> &middot; <a href="#">30 comments</a></div>
-                                
-                                <p>
-                                Ever since the move, we've lost a lot of features (dammit ChIkEn), and that's not counting when we made the transition to V3. One of them was the developers' to-do list. Now I've been wanting to contribute a little more to the site, but aside from school getting in the way, people really aren't...                                 </p>
-                            </div>
-                        </div>
-                                        </div>
-                </div>
-            </div>
-		</div>
-        
-        <div class="frontpage-section">
-			<div class="section-header">
-				<h1>News</h1>
+			<div style="clear:both">
 			</div>
-
-            <div class="section-content">
-                <p style="padding-bottom: 100px;">Here would go the news <strong>no one ever reads</strong></p>
-            </div>
 		</div>
+		<div class="blog">
+			<div class="blog-feed">
+				<article>
+				<header>
+				<h1><a href="#">Nine Hours/Drinks Later....</a></h1>
+				<small>
+				<time>October 15, 2012 at 08:38</time>
+				</small>
+				</header>
+				<div class="entry">
+					<blockquote>
+						<p>
+							Gotta love humanity's urge to ingest poison for fun.
+						</p>
+						<footer>&mdash; <cite>Charlie Carlo</cite></footer>
+					</blockquote>
+					<p>
+						So it's my birthday today, but since I have work and school, we did the celebrations last night. After having dinner and not eating very much of it, we went to the bar to grab a few drinks and leave. My limit is somewhere between three and five drinks, depending on how spaced out they are. And by limit I mean how many drinks it takes me to get pretty well tipsy but still capable of doing basic functions like walking.
+					</p>
+					<p>
+						Well when we got there, there was this lonely old drunk guy. At some point it slipped that it was my birthday, and nobody forgot about it. I've never had someone buy drinks for me like that, so it was weird but interesting. But it wasn't my birthday they were buying drinks for. It was obvious they had a thing for my mom, so I know who I'm going to the bar with from now on when my wallet's empty.
+					</p>
+					<p>
+						At the restaurant before, I had some mead (damn tasty by the way).<br>
+						 I had a cocktail at the bar.<br>
+						 The guy bought me two shots of tequila.<br>
+						 Another guy bought me a Moscow Mule and an Irish car bomb.<br>
+						 Somewhere in all that, I had a lime rickey.<br>
+						 Since she knew she was far along and since I didn't want to be wasteful, I had her Moscow Mule.<br>
+						 I also finished off half of whatever other two drinks she didn't.
+					</p>
+					<p>
+						That's nine drinks, more than I ever thought I'd do in an outing. I don't remember why I did that, but I'm sure I had a rational and well-educated reason.<br>
+						 When I got home, I pretty much crashed and couldn't move, despite needing to piss terribly. The last thing I wanted to happen was for it all to come back up, and any movement just made the nausea worse. So I've been pretty much sleepless and here I am waking up earlier than ever and feeling half decent with shit in my stomach, getting ready to go to a class I'm totally unprepared for.
+					</p>
+					<p>
+						And the funny thing is...the hangover's not that bad. I'm still dizzy nine (now ten) hours later, but there's no headache or anything.
+					</p>
+					<p>
+						Anyway.
+					</p>
+					<blockquote>
+						<p>
+							...and that's called having a good time!
+						</p>
+						<footer>- <cite>Bill Cosby</cite>
+					</blockquote>
+				</div>
+				<footer>
+				<a href="#" class="likes">+0</a>
+				<a href="#">Read the 15 comments</a>
+				</footer>
+				</article>
+			</div>
+			<div class="feed-more">
+				<a href="#">Read more blogs by Kilin</a>
+			</div>
+		</div>
+	</div>
+</div>
