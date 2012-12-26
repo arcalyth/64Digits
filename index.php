@@ -1,5 +1,10 @@
 <?php
 
+//V3 redirect.
+if (isset($_GET['cmd'])){
+	header("Location: /".getenv("BASEPATH")."user/inbox");
+}
+
 // change the following paths if necessary
 $yii=dirname(__FILE__).'/../../yii/yii.php';
 $config=dirname(__FILE__).'/protected/config/main.php';
