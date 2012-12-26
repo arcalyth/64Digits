@@ -11,9 +11,12 @@
 	
 	<!-- Handlebars libary -->
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/handlebars-1.0.js"></script>
+	
+	<!-- JS responding to the main layout only. -->
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>
 </head>
 
-<body class="<?php if ($this->isGuest) echo "not-logged-in";?>">
+<body class="<?php if ($this->isGuest()) echo "not-logged-in";?>">
 
 <div id="top-bar">
 	<div class="bar-inner top_bar">
@@ -35,7 +38,7 @@
 <div id="top-bar-sub">
 	<div class="bar-inner sub_bar">
 	<?php 
-		if ($this->isGuest){
+		if ($this->isGuest()){
 			$this->renderPartial("application.views.global.loginbar");
 		}else{
 			$this->renderPartial("application.views.global.userbar",array("user"=>$this->user()));		
@@ -78,7 +81,14 @@
 
 <div id="container">
 	<div id="sidebar-wrapper">
-		<?php echo $this->clips['sidebar']; ?>
+		<?php 
+			/*
+			* CClipWidget for the sidebar. 
+			* This is most often rendered in sidebar.php inside the specific controllers beforeAction / (view)sidebar.php renderization.
+			* This allows a custom sidebar for each page.
+			*/
+			echo $this->clips['sidebar']; 
+		?>
 	</div>
 
 	<div id="main-wrapper">
@@ -90,10 +100,5 @@
     <p>Here goes footer stuff and stuff</p>
 </footer>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>
-<!--
-</body> fuck you, code that is inserted into every damn page
--->
 </body>
 </html>

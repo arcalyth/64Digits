@@ -16,6 +16,10 @@ To Install 64Digits:
 		Use the command `./protected/yiic migrate up <X>` to upgrade database X steps.
 	6) cp .htaccess-copy .htaccess;
 		You shouldn't have to modify this file unless you're in a subdirectory. If so, include it in the BASEPATH folder. This takes care of the redirector.
+	7) Install node.js 
+		cd node; npm install socket.io;
+		Start node/server.js as a daemon. You can do this in a screen or whatever.
+		
 
 
 Migrations documentation:

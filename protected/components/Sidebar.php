@@ -6,22 +6,12 @@
 		public function run(){
 			$this->render($this->sidebar,$this->data);
 		}
-		
-		
-		/*
-		
-				<a class="link-user " href="#">
-					<span class="tiny-avatar">
-						<img title="sirxemic" src="http://www.64digits.com/users/sirxemic/croxer-cropped.png">
-					</span> 
-					sirxemic
-				</a> 
 
-
-					
-					*/
 		//Splits string intelligibly
 		public function formatDescription($format,$entry){
+			
+			Yii::import('ext.Time');
+
 			return preg_replace_callback('/%(.)/', function($m) use ($entry) {
 			
 				//%u = user(s)
@@ -100,6 +90,8 @@
 				}
 			}, $format);
 		}
+		
+		
 		
 	}
 

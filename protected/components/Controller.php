@@ -3,23 +3,21 @@
  * Controller is the customized base controller class.
  * All controller classes for this application should extend from this base class.
  */
-class Controller extends CController
-{
+class Controller extends CController {
+
+	//Yii complains if these are not public.
 	public $user = null;
 	public $isGuest = true;
 	/**
-	 * @var string the default layout for the controller view. Defaults to '//layouts/column1',
-	 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
+	 * @var string the default layout for the controller view. Defaults to '//layouts/main',
+	 * meaning using a single column layout. See 'protected/views/layouts/main.php'.
 	 */
 	public $layout='//layouts/main';
-	
-	public function __construct($id,$module=null) { 
-		parent::__construct($id,$module);
-		
-		//To set the $this->user up
-		$this->user();
-	}
 
+	public function isGuest(){
+		$this->user();
+		return $this->isGuest;
+	}
 	public function user(){
 		$this->isGuest = true;
 		if ($this->user == null){ //Only perform once, performance.
