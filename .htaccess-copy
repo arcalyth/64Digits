@@ -1,0 +1,20 @@
+<Files .*>
+	Order Deny,Allow
+	Deny From All
+</Files>
+
+SetEnv BASEPATH ""
+
+RewriteEngine on
+
+RewriteRule ^games/index.php$ v3redirect/games/index.php
+RewriteRule ^users/index.php$ v3redirect/users/index.php
+RewriteRule ^users/index.php$ v3redirect/users/index.php
+RewriteRule ^download.php$ v3redirect/download.php
+
+# if a directory or a file exists, use it directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# otherwise forward it to index.php
+RewriteRule . index.php
