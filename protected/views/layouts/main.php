@@ -8,6 +8,9 @@
 	<link href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css" />
 	<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet" type="text/css" />
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	
+	<!-- Handlebars libary -->
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/handlebars-1.0.js"></script>
 </head>
 
 <body class="<?php if ($this->isGuest) echo "not-logged-in";?>">

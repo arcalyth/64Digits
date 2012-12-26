@@ -11,8 +11,11 @@ To Install 64Digits:
 		Configure the main.php file with your own database credentials (component -> db)
 	4) cp protected/config/console-copy.php protected/config/console.php;
 		Configure this file with the same database credentials.
-	5) cd protected/; ./yiic migrate
-		Will list all migrations available. Use the command ./yiic migrate up <X> to upgrade database
+	5) ./protected/yiic migrate
+		Will list all migrations available. 
+		Use the command `./protected/yiic migrate up <X>` to upgrade database X steps.
+	6) cp .htaccess-copy .htaccess;
+		You shouldn't have to modify this file unless you're in a subdirectory. If so, include it in the BASEPATH folder. This takes care of the redirector.
 
 
 Migrations documentation:
