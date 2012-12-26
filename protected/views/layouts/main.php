@@ -7,12 +7,13 @@
 
 	<link href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css" />
 	<link href="<?php echo Yii::app()->request->baseUrl; ?>/css/style.css" rel="stylesheet" type="text/css" />
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 </head>
 
-<body class="<?php if (Yii::app()->user->isGuest) echo "not-logged-in";?>">
+<body class="<?php if ($this->isGuest) echo "not-logged-in";?>">
 
 <div id="top-bar">
-	<div class="bar-inner">
+	<div class="bar-inner top_bar">
         <h1>sixty four digits community</h1>
 		<ul>
 			<li class="active"><a id="logo" href="<?php echo Yii::app()->request->baseUrl; ?>/"></a></li>
@@ -29,18 +30,48 @@
 </div>
 
 <div id="top-bar-sub">
-	<div class="bar-inner">
-		<ul>
-			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/">my page</a></li>
-			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/media/submit">submit</a></li>
-			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/inbox" class="inbox-link"><span>inbox</span> <span class="inline-badge">212</span></a></li>
-			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/user/settings">settings</a></li>
-			<li class="seperator"></li>
-			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/home/logout">log out</a></li>
-		</ul>
+	<div class="bar-inner sub_bar">
+	<?php 
+		if ($this->isGuest){
+			$this->renderPartial("application.views.global.loginbar");
+		}else{
+			$this->renderPartial("application.views.global.userbar",array("user"=>$this->user()));		
+		}
+	?>
+		
 	</div>
 </div>
 
+<script>
+	$("#login_button").click(function() {
+		var u = $("#login_username").val();
+		var p = $("#login_password").val();
+		var r = $("#login_remember").val();
+		
+		$.ajax({
+			type: "post",
+			url: "<?php print Yii::app()->request->getUrl(); ?>ajax/login",
+			data: {
+					username: u,
+					password: p, 
+					remember: r
+				},
+			success: function(data){
+			
+				data = jQuery.parseJSON(data);
+				if (data.success === true){
+					$.each(data.data, function(index, obj){
+						$(obj.replaces).hide().html(obj.html).fadeIn('slow');
+					});
+				}
+			},
+			error: function(data) {
+				alert("Looks like the login failed because of an HTTP error.");
+			}
+		});
+				
+	});
+</script>
 
 <div id="container">
 	<div id="sidebar-wrapper">

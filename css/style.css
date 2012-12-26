@@ -661,3 +661,27 @@ article blockquote cite {
 .blog article > footer span.likes:hover:after {
     content: " you already liked this!";
 }
+
+.login-field{
+	font-family: 'Droid Sans', "Helvetica Neue", Arial, sans-serif;
+	font-size: 12px;
+	background: #EEE url(img/noisebg.png);
+	
+	border: none;
+	border-radius: 12px;
+	line-height: 23px;
+	height: 21px;
+	padding: 0 12px;
+	width: 150px;
+	float: right;
+	position: relative;
+	top: 4px;
+	
+}
+.login-button{
+	width: 62px;
+}
+.login-position{
+	position: relative;
+	left: -8px;
+}

@@ -20,6 +20,14 @@
  */
 class Users extends CActiveRecord
 {
+
+	public $errorCode;
+	
+	const ERROR_NONE = 0;
+	const ERROR_USERNAME_INVALID = 1;
+	const ERROR_PASSWORD_INVALID = 2;
+	const ERROR_USER_BANNED = 4;
+	
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -123,4 +131,21 @@ class Users extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	public function authenticate( $password, $dontHash = false){
+	
+		if($dontHash == true && $password != $this->password ){
+			$this->errorCode=self::ERROR_PASSWORD_INVALID;		
+		}else if($dontHash == false && hash("sha256",$password.$this->join_date) != $this->password ){
+			$this->errorCode=self::ERROR_PASSWORD_INVALID;
+		}else if ($this->banned != 0){
+			$this->errorCode=self::ERROR_USER_BANNED;
+		}else{
+			Yii::app()->request->cookies['uid'] = new CHttpCookie('uid', $this->id);
+			Yii::app()->request->cookies['upw'] = new CHttpCookie('upw', $this->password);
+			$this->errorCode=self::ERROR_NONE;
+		}
+		return $this->errorCode;
+	}
+	
 }
