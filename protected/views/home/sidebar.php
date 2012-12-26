@@ -4,7 +4,8 @@
 		$this->widget('application.components.Sidebar', array(
 			'sidebar' => "activitySideBar",
 			'data' => array(
-						array(	"type"=>"blog",
+						array(	"id"=>"1",
+								"type"=>"blog",
 								"title"=>"Hectocosm",
 								"time"=>time()-rand(0,15000),
 								"users"=>array(
@@ -12,7 +13,8 @@
 										),
 								"format"=>"%u commented %t"
 						),
-						array(	"type"=>"blog",
+						array(	"id"=>"2",
+								"type"=>"blog",
 								"title"=>"S4D 2012 - UPDATE",
 								"time"=>time()-rand(0,15000),
 								"users"=>array(
@@ -21,7 +23,8 @@
 										),
 								"format"=>"%u commented %t"
 						),
-						array(	"type"=>"blog",
+						array(	"id"=>"3",
+								"type"=>"blog",
 								"title"=>"Im out (again)",
 								"time"=>time()-rand(0,15000),
 								"users"=>array(
