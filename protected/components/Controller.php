@@ -7,6 +7,10 @@ class Controller extends CController
 {
 	public $user = null;
 	public $isGuest = true;
+	/**
+	 * @var string the default layout for the controller view. Defaults to '//layouts/column1',
+	 * meaning using a single column layout. See 'protected/views/layouts/column1.php'.
+	 */
 	public $layout='//layouts/main';
 	
 	public function __construct($id,$module=null) { 
@@ -18,21 +22,18 @@ class Controller extends CController
 
 	public function user(){
 		$this->isGuest = true;
-		
-		//Only perform once, performance.
-		if ($this->user == null){
+		if ($this->user == null){ //Only perform once, performance.
 			$this->user = Users::model()->findByPK(Yii::app()->request->cookies['uid']);
-			
-			if ($this->user != null && $this->user->authenticate(Yii::app()->request->cookies['upw'], true) != Users::ERROR_NONE){
-				//Invalid, this user is a guest.
-				$this->user = null;
-				$this->isGuest = true;
-			}else{
-				//Is a user.
-				$this->isGuest = false;
+			if ($this->user != null){
+				if ($this->user->authenticate(Yii::app()->request->cookies['upw'], true) != Users::ERROR_NONE){
+					$this->user = null;
+				}else{
+					$this->isGuest = false;
+				}
 			}
 		}
 		
 		return $this->user;
-	}	
+	}
+	
 }
