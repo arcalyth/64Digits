@@ -18,6 +18,10 @@ class HomeController extends Controller
 	 * when an action is not explicitly requested by users.
 	 */
 	public function actionIndex(){
+	
+		Yii::import('ext.Notify');
+		//Temporary handlers I have setup in the client.html for the node.JS work.
+		(new Notify())->emit("DebugUser",array("name"=>"bob"))->emit("DebugUser",array("name"=>"Stevenup7002"));
 		$this->render('index');
 	}
 

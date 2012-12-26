@@ -1,6 +1,4 @@
-<?php
-	Yii::import('ext.Time');
-?>
+
 <div id="activity-box" class="section">
 	<div class="section-header">
 		<h1>Latest activity <span class="inline-badge">3*</span></h1>

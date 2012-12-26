@@ -34,7 +34,7 @@
 					<h1><a href="#">The Twilight Realm</a></h1>
 					<blockquote>
 						<p>
-							Okay, so this was pretty awesome and omg narwhal.
+							 Okay, so this was pretty awesome and omg narwhal.
 						</p>
 						<cite>&mdash; Qwilderus</cite>
 					</blockquote>
@@ -49,7 +49,7 @@
 					<h1><a href="#">Ascended - Fight or Flight</a></h1>
 					<blockquote>
 						<p>
-							This is awesome
+							 This is awesome
 						</p>
 						<cite>&mdash; Someone</cite>
 					</blockquote>
@@ -73,18 +73,18 @@
 				<div class="entry">
 					<blockquote>
 						<p>
-							Gotta love humanity's urge to ingest poison for fun.
+							 Gotta love humanity's urge to ingest poison for fun.
 						</p>
 						<footer>&mdash; <cite>Charlie Carlo</cite></footer>
 					</blockquote>
 					<p>
-						So it's my birthday today, but since I have work and school, we did the celebrations last night. After having dinner and not eating very much of it, we went to the bar to grab a few drinks and leave. My limit is somewhere between three and five drinks, depending on how spaced out they are. And by limit I mean how many drinks it takes me to get pretty well tipsy but still capable of doing basic functions like walking.
+						 So it's my birthday today, but since I have work and school, we did the celebrations last night. After having dinner and not eating very much of it, we went to the bar to grab a few drinks and leave. My limit is somewhere between three and five drinks, depending on how spaced out they are. And by limit I mean how many drinks it takes me to get pretty well tipsy but still capable of doing basic functions like walking.
 					</p>
 					<p>
-						Well when we got there, there was this lonely old drunk guy. At some point it slipped that it was my birthday, and nobody forgot about it. I've never had someone buy drinks for me like that, so it was weird but interesting. But it wasn't my birthday they were buying drinks for. It was obvious they had a thing for my mom, so I know who I'm going to the bar with from now on when my wallet's empty.
+						 Well when we got there, there was this lonely old drunk guy. At some point it slipped that it was my birthday, and nobody forgot about it. I've never had someone buy drinks for me like that, so it was weird but interesting. But it wasn't my birthday they were buying drinks for. It was obvious they had a thing for my mom, so I know who I'm going to the bar with from now on when my wallet's empty.
 					</p>
 					<p>
-						At the restaurant before, I had some mead (damn tasty by the way).<br>
+						 At the restaurant before, I had some mead (damn tasty by the way).<br>
 						 I had a cocktail at the bar.<br>
 						 The guy bought me two shots of tequila.<br>
 						 Another guy bought me a Moscow Mule and an Irish car bomb.<br>
@@ -93,18 +93,18 @@
 						 I also finished off half of whatever other two drinks she didn't.
 					</p>
 					<p>
-						That's nine drinks, more than I ever thought I'd do in an outing. I don't remember why I did that, but I'm sure I had a rational and well-educated reason.<br>
+						 That's nine drinks, more than I ever thought I'd do in an outing. I don't remember why I did that, but I'm sure I had a rational and well-educated reason.<br>
 						 When I got home, I pretty much crashed and couldn't move, despite needing to piss terribly. The last thing I wanted to happen was for it all to come back up, and any movement just made the nausea worse. So I've been pretty much sleepless and here I am waking up earlier than ever and feeling half decent with shit in my stomach, getting ready to go to a class I'm totally unprepared for.
 					</p>
 					<p>
-						And the funny thing is...the hangover's not that bad. I'm still dizzy nine (now ten) hours later, but there's no headache or anything.
+						 And the funny thing is...the hangover's not that bad. I'm still dizzy nine (now ten) hours later, but there's no headache or anything.
 					</p>
 					<p>
-						Anyway.
+						 Anyway.
 					</p>
 					<blockquote>
 						<p>
-							...and that's called having a good time!
+							 ...and that's called having a good time!
 						</p>
 						<footer>- <cite>Bill Cosby</cite>
 					</blockquote>
