@@ -6,7 +6,6 @@ class Notify {
 		//This SHOULD NOT CHANGE BASED ON ENVIRONMENT unless we place our Node.JS server somewhere other than localhost.
 		curl_setopt($this->ch,CURLOPT_URL, "http://localhost:9091/emit.js");
 		curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($this->ch,CURLOPT_POST, 1);
 	}
 	
 	/*
@@ -22,16 +21,21 @@ class Notify {
 		if (is_array($data)){
 			$data = json_encode($data);
 		}
-		
+		$params = 2;
 		$ext = "";
 		foreach ($constraints as $key => $value){
 			$ext .= "&";
-			if (is_string($value) || is_numeric($value)){
-				$ext .= $key."=[".$value."]";
-			}else if (is_array($value)){
+			if (is_array($value)){
 				$ext .= $key."=".json_encode($value);
+			}else{
+			 if ($value == 0){$value="0";}
+				$ext .= $key.'=["'.$value.'"]';
 			}
+			$params++;
 		}
+		
+		
+		curl_setopt($this->ch,CURLOPT_POST, true);
 		
 		curl_setopt($this->ch,CURLOPT_POSTFIELDS, "handler=".$event."&broadcast=".$data.$ext);
 		curl_exec($this->ch);
