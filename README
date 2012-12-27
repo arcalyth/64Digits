@@ -19,7 +19,9 @@ To Install 64Digits:
 	7) Install node.js & dependancies
 		cd node; npm install socket.io; npm install mysql@2.0.0-alpha5;
 		Start node/server.js as a daemon. You can do this in a screen or whatever.
-		
+	8) Configure Node for MYSQL...
+		cp config-copy.js config.js;
+		Add required fields (You'd think there would be a way to not have to do this a dozen times...)
 
 
 Migrations documentation:
