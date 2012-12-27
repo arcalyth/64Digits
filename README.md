@@ -1,17 +1,18 @@
 Dependencies
 ================================
-PHP 5.4.7+
-Node 6.8.0+
-MySQL 5.5.23+
-Yii v1.1.12
+* PHP 5.4.7+
+* Node 6.8.0+
+* MySQL 5.5.23+
+* Yii v1.1.12
+
 
 Libraries Used
 ================================
-http://www.yiiframework.com/
-http://handlebarsjs.com/
-http://nodejs.org/
-http://socket.io/
-https://github.com/felixge/node-mysql
+* http://www.yiiframework.com/
+* http://handlebarsjs.com/
+* http://nodejs.org/
+* http://socket.io/
+* https://github.com/felixge/node-mysql
 
 Installation
 ================================
@@ -53,5 +54,5 @@ Quick Install (After cloning and setting up Yii)
 
 Relevant Documentation
 ================================
-	Yii Migrations
-	http://www.yiiframework.com/doc/guide/1.1/en/database.migration
+* Yii Migrations
+	 http://www.yiiframework.com/doc/guide/1.1/en/database.migration
