@@ -21,8 +21,11 @@ class HomeController extends Controller
 	
 		Yii::import('ext.Notify');
 		//Temporary handlers I have setup in the client.html for the node.JS work.
-		(new Notify())->emit("DebugUser",array("name"=>"bob"))
-		->emit("DebugUser",array("name"=>"Stevenup7002"),"/home");
+		(new Notify())->emit("DebugUser",array("name"=>"yes-1"))
+		->emit("DebugUser",array("name"=>"yes"),array("url"=>"home"))
+		->emit("DebugUser",array("name"=>"yes2"),array("user"=>1))
+		->emit("DebugUser",array("name"=>"yes3"),array("user"=>array(1,2)))
+		->emit("DebugUser",array("name"=>"yes4"),array("user"=>1));
 		
 		$this->render('index');
 	}
