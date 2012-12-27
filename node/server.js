@@ -1,8 +1,16 @@
 var io = require('socket.io').listen(9090);
 var http = require('http');
-var fs = require('fs');
 var url = require('url');
 var querystring = require('querystring');
+var mysql      = require('mysql');
+var config = require("./config.js");
+
+var connection = mysql.createConnection({
+	host     : config.mysql_address,
+	user     : config.mysql_username,
+	password : config.mysql_password,
+	database : config.mysql_database
+});
 
 var transaction = 0;
 
@@ -40,17 +48,31 @@ http.createServer(function (req, res) {
 	if (uri === "/emit.js"){
 	
 		postRequest(req, res, function() {
+		/*
 			console.log("Handler: "+res.post.handler);
 			console.log("Broadcast: "+res.post.broadcast);
+			*/
 			var data = JSON.parse(res.post.broadcast);
-			if (res.post.hasOwnProperty("url")){
-				console.log("has property url");
+			if (res.post.hasOwnProperty("url") || res.post.hasOwnProperty("user")){
 				//URL restricted broadcast
 				
 				for(var index in socket_pool){
-					console.log(data.url);
-					if (res.post.url.match(socket_pool[index].path)){
-						socket_pool[index].socket.emit(res.post.handler, res.post.broadcast);
+					var sent = false;
+					
+					/*Filter via PATH.*/
+					if (res.post.hasOwnProperty("url")){
+						console.log(data.url);
+						if (res.post.url.match(socket_pool[index].path)){
+							sent = true;
+							socket_pool[index].socket.emit(res.post.handler, res.post.broadcast);
+						}
+					}
+					
+					/*Filter via User(s).*/
+					if (!sent && res.post.hasOwnProperty("user")){
+						if ( !socket_pool[index].guest && JSON.parse(res.post.user).indexOf(socket_pool[index].userid) != -1){
+							socket_pool[index].socket.emit(res.post.handler, res.post.broadcast);
+						}
 					}
 				}
 			}else{
@@ -70,8 +92,36 @@ http.createServer(function (req, res) {
 }).listen(9091,"127.0.0.1"); //Remove the 2nd parameter if you wish you use a REST kit to debug from a non-local machine.
 
 io.sockets.on('connection', function (socket) {
-	socket.on('location', function (data) {
-		socket_pool.push({socketid: socket.id, socket:socket, path: data.path});
+	socket.on('auth', function (data) {
+		if (data.guest){
+			socket_pool.push({
+				socketid: socket.id,
+				socket:socket,
+				path: data.path,
+				auth: false
+			});
+		}else{
+		console.log(data);
+		
+			connection.query("SELECT `id` FROM `users` WHERE `username` = "+connection.escape(data.username)+" AND `password` = "+connection.escape(data.authtoken)+" LIMIT 1", function(err, rows) {
+				if (rows.length == 1){
+					socket_pool.push({
+						socketid: socket.id,
+						socket:socket,
+						path: data.path,
+						auth: true,
+						userid: rows[0].id
+					});
+				}else{
+					socket_pool.push({
+						socketid: socket.id,
+						socket:socket,
+						path: data.path,
+						auth: false
+					});
+				}
+			});
+		}
 	});
 	
 	socket.on('disconnect', function (data) {

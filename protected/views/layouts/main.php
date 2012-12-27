@@ -31,7 +31,13 @@
 	?>
 	
 	  var socket = io.connect(':9090');
-	  socket.emit('location', { path: '<?php print $path; ?>' });
+	  socket.emit('auth', { 
+			path: "<?php print $path; ?>",
+			guest: <?php print $this->isGuest() ? "1" : "0"; ?>,
+			username: "<?php print $this->user()->username; ?>",
+			authtoken: "<?php print $this->user()->password; /* TODO: Do a real auth token here.*/ ?>"
+	  });
+	  
 	  socket.on('DebugUser', function (data) {
 		console.log(data);
 	  });

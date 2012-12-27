@@ -9,15 +9,28 @@ class Notify {
 		curl_setopt($this->ch,CURLOPT_POST, 1);
 	}
 	
-	public function emit($event, $data, $url = ""){
+	/*
+		Possible constraints:
+		url  : JS regex (Via string.match())
+		user : User ID(s). Either string, number, or array.
+		*****************************
+		PARAMETERS ARE OR'D TOGETHER.
+		*****************************
+	*/
+	public function emit($event, $data, $constraints = array()){
 	
 		if (is_array($data)){
 			$data = json_encode($data);
 		}
 		
-		$ext = "&";
-		if ($url != ""){
-			$ext .= "url=".$url;
+		$ext = "";
+		foreach ($constraints as $key => $value){
+			$ext .= "&";
+			if (is_string($value) || is_numeric($value)){
+				$ext .= $key."=[".$value."]";
+			}else if (is_array($value)){
+				$ext .= $key."=".json_encode($value);
+			}
 		}
 		
 		curl_setopt($this->ch,CURLOPT_POSTFIELDS, "handler=".$event."&broadcast=".$data.$ext);
