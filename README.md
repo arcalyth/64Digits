@@ -1,4 +1,20 @@
-To Install 64Digits:
+Dependencies
+================================
+PHP 5.4.7+
+Node 6.8.0+
+MySQL 5.5.23+
+Yii v1.1.12
+
+Libraries Used
+================================
+http://www.yiiframework.com/
+http://handlebarsjs.com/
+http://nodejs.org/
+http://socket.io/
+https://github.com/felixge/node-mysql
+
+Installation
+================================
 	1) Install Yii Framework somewhere outside of the repo. 
 		(Recommended to be in ../yii, assuming you're in a public_html folder)
 			Should look like this:
@@ -23,6 +39,19 @@ To Install 64Digits:
 		cp config-copy.js config.js;
 		Add required fields (You'd think there would be a way to not have to do this a dozen times...)
 
+Quick Install (After cloning and setting up Yii)
+================================
+	cd node; npm install; cd ../;
+	cp .htaccess-copy .htaccess;
+	cp protected/config/main-copy.php protected/config/main.php;
+	cp protected/config/console-copy.php protected/config/console.php;
+	cp config-copy.js config.js;
+	**Configure the MySQL credentials in main.php, console.php, and config.js**
+	./protected/yiic migrate up 1
+	cd node; screen; node server.js;
+	
 
-Migrations documentation:
+Relevant Documentation
+================================
+	Yii Migrations
 	http://www.yiiframework.com/doc/guide/1.1/en/database.migration

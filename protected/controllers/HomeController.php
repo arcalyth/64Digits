@@ -25,6 +25,7 @@ class HomeController extends Controller
 		->emit("DebugUser",array("name"=>"yes"),array("url"=>"home"))
 		->emit("DebugUser",array("name"=>"yes2"),array("user"=>1))
 		->emit("DebugUser",array("name"=>"yes3"),array("user"=>array(1,2)))
+		->emit("DebugUser",array("name"=>"Ryan is awesome AND #".rand(0,10000)))
 		->emit("DebugUser",array("name"=>"yes4"),array("user"=>1));
 		
 		$this->render('index');
