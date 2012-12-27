@@ -9,13 +9,18 @@ class Notify {
 		curl_setopt($this->ch,CURLOPT_POST, 1);
 	}
 	
-	public function emit($event, $data){
+	public function emit($event, $data, $url = ""){
 	
 		if (is_array($data)){
 			$data = json_encode($data);
 		}
 		
-		curl_setopt($this->ch,CURLOPT_POSTFIELDS, "handler=".$event."&broadcast=".$data);
+		$ext = "&";
+		if ($url != ""){
+			$ext .= "url=".$url;
+		}
+		
+		curl_setopt($this->ch,CURLOPT_POSTFIELDS, "handler=".$event."&broadcast=".$data.$ext);
 		curl_exec($this->ch);
 		return $this;
 	}
