@@ -53,16 +53,17 @@ http.createServer(function (req, res) {
 			console.log("Broadcast: "+res.post.broadcast);
 			*/
 			var data = JSON.parse(res.post.broadcast);
-			if (res.post.hasOwnProperty("url") || res.post.hasOwnProperty("user")){
+			//console.log(JSON.stringify(res.post, null, 2));
+			if (res.post.hasOwnProperty("url") || res.post.hasOwnProperty("user") || res.post.hasOwnProperty("guest")){
 				//URL restricted broadcast
-				
+
 				for(var index in socket_pool){
 					var sent = false;
 					
 					/*Filter via PATH.*/
-					if (res.post.hasOwnProperty("url")){
-						console.log(data.url);
-						if (res.post.url.match(socket_pool[index].path)){
+					if (!sent && res.post.hasOwnProperty("url")){
+						//This may or may not work.
+						if (JSON.parse(res.post.url)[0].match(socket_pool[index].path)){
 							sent = true;
 							socket_pool[index].socket.emit(res.post.handler, res.post.broadcast);
 						}
@@ -72,9 +73,24 @@ http.createServer(function (req, res) {
 					if (!sent && res.post.hasOwnProperty("user")){
 						if ( !socket_pool[index].guest && JSON.parse(res.post.user).indexOf(socket_pool[index].userid) != -1){
 							socket_pool[index].socket.emit(res.post.handler, res.post.broadcast);
+							sent = true;
+						}
+					}
+					
+					
+					/*Filter via if guest or not..*/
+					if (!sent && res.post.hasOwnProperty("guest")){
+					   console.log("Sockets guest: "+socket_pool[index].guest);
+					   console.log("Assumed guest: "+JSON.parse(res.post.guest)[0]);
+					   console.log("Broadcast: "+res.post.broadcast);
+					   
+						if (socket_pool[index].guest == JSON.parse(res.post.guest)[0] ){
+							socket_pool[index].socket.emit(res.post.handler, res.post.broadcast);
+							sent = true;
 						}
 					}
 				}
+				
 			}else{
 				//Global broadcast
 				io.sockets.emit(res.post.handler, res.post.broadcast);
@@ -98,10 +114,10 @@ io.sockets.on('connection', function (socket) {
 				socketid: socket.id,
 				socket:socket,
 				path: data.path,
+				guest: true,
 				auth: false
 			});
 		}else{
-		console.log(data);
 		
 			connection.query("SELECT `id` FROM `users` WHERE `username` = "+connection.escape(data.username)+" AND `password` = "+connection.escape(data.authtoken)+" LIMIT 1", function(err, rows) {
 				if (rows.length == 1){
@@ -110,6 +126,7 @@ io.sockets.on('connection', function (socket) {
 						socket:socket,
 						path: data.path,
 						auth: true,
+						guest: false,
 						userid: rows[0].id
 					});
 				}else{
@@ -117,6 +134,7 @@ io.sockets.on('connection', function (socket) {
 						socketid: socket.id,
 						socket:socket,
 						path: data.path,
+						guest: true,
 						auth: false
 					});
 				}

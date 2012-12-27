@@ -6,32 +6,39 @@
 class Controller extends CController {
 
 	//Yii complains if these are not public.
-	public $user = null;
-	public $isGuest = true;
+	private $_user = null;
+	private $_isGuest = true;
 	/**
 	 * @var string the default layout for the controller view. Defaults to '//layouts/main',
 	 * meaning using a single column layout. See 'protected/views/layouts/main.php'.
 	 */
 	public $layout='//layouts/main';
+	
+	public function __construct($id,$module=null) {
+	   parent::__construct($id,$module);
+	   $this->user();
+	   }
 
 	public function isGuest(){
-		$this->user();
-		return $this->isGuest;
+		return $this->_isGuest;
 	}
 	public function user(){
-		$this->isGuest = true;
-		if ($this->user == null){ //Only perform once, performance.
-			$this->user = Users::model()->findByPK(Yii::app()->request->cookies['uid']);
-			if ($this->user != null){
-				if ($this->user->authenticate(Yii::app()->request->cookies['upw'], true) != Users::ERROR_NONE){
-					$this->user = null;
-				}else{
-					$this->isGuest = false;
-				}
-			}
+		if ($this->_user === null){ //Only perform once, performance.
+		  if (isset(Yii::app()->request->cookies['uid'])){
+    		  $this->_user = Users::model()->findByPK(Yii::app()->request->cookies['uid']->value);
+    		  if ($this->_user != null){
+    		      if ($this->_user->authenticate(Yii::app()->request->cookies['upw']->value, true) != Users::ERROR_NONE){
+    				/*Bad Auth.*/
+    				$this->_user = null;
+    				$this->_isGuest = true;
+    				}else{
+    					$this->_isGuest = false;
+    				}
+    			}
+    		}
 		}
 		
-		return $this->user;
+		return $this->_user;
 	}
 	
 }

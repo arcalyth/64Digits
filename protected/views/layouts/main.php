@@ -34,8 +34,8 @@
 	  socket.emit('auth', { 
 			path: "<?php print $path; ?>",
 			guest: <?php print $this->isGuest() ? "1" : "0"; ?>,
-			username: "<?php print $this->user()->username; ?>",
-			authtoken: "<?php print $this->user()->password; /* TODO: Do a real auth token here.*/ ?>"
+			username: "<?php if ($this->user() != null){ print $this->user()->username; }?>",
+			authtoken: "<?php if ($this->user() != null){ print $this->user()->password; } /* TODO: Do a real auth token here.*/ ?>"
 	  });
 	  
 	  socket.on('DebugUser', function (data) {
@@ -70,7 +70,8 @@
 <div id="top-bar-sub">
 	<div class="bar-inner sub_bar">
 	<?php 
-		if ($this->isGuest()){
+	
+		if ($this->isGuest() == true){
 			$this->renderPartial("application.views.global.loginbar");
 		}else{
 			$this->renderPartial("application.views.global.userbar",array("user"=>$this->user()));		
