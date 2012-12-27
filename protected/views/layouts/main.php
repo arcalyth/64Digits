@@ -14,6 +14,32 @@
 	
 	<!-- JS responding to the main layout only. -->
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>
+	
+	<script src="<?php echo Yii::app()->request->baseUrl; ?>/node/socket.io/socket.io.js"></script>
+	
+	<script>
+	<?php
+		$path = substr(Yii::app()->request->requestUri,strlen(Yii::app()->request->baseUrl));
+		if ($path == "/"){
+			$path = $this->uniqueid."/index";
+		}
+		$path = trim($path,"/");
+		if (substr_count($path, "/") == 0){
+			$path .= "/index";
+		}
+		
+	?>
+	
+	  var socket = io.connect(':9090');
+	  socket.emit('location', { path: '<?php print $path; ?>' });
+	  socket.on('DebugUser', function (data) {
+		console.log(data);
+	  });
+	  
+	  socket.on('location', function (data) {
+		console.log(data);
+	  });
+	</script>
 </head>
 
 <body class="<?php if ($this->isGuest()) echo "not-logged-in";?>">
