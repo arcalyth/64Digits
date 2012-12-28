@@ -685,3 +685,17 @@ article blockquote cite {
 	position: relative;
 	left: -8px;
 }
+
+.form .row,
+.rules p {
+    margin-bottom:0.5em;
+}
+
+.form label {
+    width:160px;
+    display:inline-block;
+}
+
+.rules h2 {
+    font-size:13px;
+}

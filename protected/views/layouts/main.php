@@ -59,7 +59,11 @@
 			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/media/music">music</a></li>
 			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/media/art">art</a></li>
 			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/media/examples">examples</a></li>
-		</ul>
+		<?php if ($this->isGuest() == true){ ?>
+			<li><a href="<?php echo Yii::app()->request->baseUrl; ?>/home/register">register</a></li>
+        <?php }?>
+        
+        </ul>
 
 		<div id="search-wrapper">
 			<input placeholder="search" type="text" id="search-field" />

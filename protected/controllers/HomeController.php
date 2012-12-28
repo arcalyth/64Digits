@@ -33,6 +33,40 @@ class HomeController extends Controller
 		
 		$this->render('index');
 	}
+    
+	public function actionRegister(){
+		//Validate registration form
+		$valid = true;
+		$valid = $valid && isset($_POST["fullname"]);
+		$valid = $valid && isset($_POST["username"]);
+		$valid = $valid && isset($_POST["password"]);
+		$valid = $valid && isset($_POST["password2"]);
+		$valid = $valid && isset($_POST["email"]);
+		$valid = $valid && isset($_POST["sex"]);
+		$valid = $valid && isset($_POST["terms"]);
+		$valid = $valid && $_POST["password"] == $_POST["password2"];
+		
+		if($valid) {
+			//Create new record
+			$join_date = time();
+			
+			$user = new Users;
+			$user->username = $_POST["username"];
+			$user->email = $_POST["email"];
+			$user->password = hash("sha256",$_POST["password"].$join_date);
+			$user->gender = $_POST["sex"];
+			$user->join_date = $join_date;
+			$user->banned = 0;
+			
+			if($user->save()) {
+				$this->render('index');
+			} else {
+				$this->render('register');
+			}
+		} else {
+			$this->render('register');
+		}
+	}
 
 	/**
 	 * This is the action to handle external exceptions.
