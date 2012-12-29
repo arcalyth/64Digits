@@ -49,6 +49,12 @@ return array(
 				'user/inbox' => 'user/inbox',
 				'user/filemanager' => 'user/filemanager',
 				'user/<action>/*' => 'user/view/user/<action>', /*Redirect for a user page.*/
+				
+				
+				'static/index' => 'static/index',
+				'static/view/<page:\w+>' => 'static/view',
+				'static/edit/<page:\w+>' => 'static/edit',
+				'static/<page:\w+>' => 'static/view', /*Redirect for a user page.*/
 			)
 		),
 		
