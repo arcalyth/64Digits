@@ -81,56 +81,6 @@ class HomeController extends Controller
 		}
 	}
 	
-	public function actionStatic(){
-		//These two lines simulate this url: /home/static/key($_GET)/$_GET[$page]="view"
-		$page =  key($_GET);
-		if ($page == ""){
-			//Should print a tidy document of available static pages. 
-			return;
-		}
-		$action = (isset($_GET[$page]) && $_GET[$page] != "") ? $_GET[$page] : "view";
-		
-		$pagedata = StaticPage::model()->findByAttributes(array("tag"=>$page));
-		if ($pagedata == null){
-			$action = ($this->user() && $this->user()->hasRole("static")) ? "new" : "error";
-		}
-		
-		switch ($action){
-			case "view":
-				$this->render("static",
-					array(
-						"tag"=>$pagedata->tag,
-						"title"=>$pagedata->title,
-						"body"=>$pagedata->body,
-						"last_modified"=>$pagedata->last_modified,
-						"edit" => ($this->user() && $this->user()->hasRole("static"))
-					));
-			break;
-			case "new":
-			case "edit":
-				if ($this->user() && $this->user()->hasRole("static")){
-					Yii::app()->getClientScript()->registerCssFile(yii::app()->request->baseUrl.'/css/jquery.sceditor.default.min.css', 'screen');
-					Yii::app()->getClientScript()->registerCssFile(yii::app()->request->baseUrl.'/css/sceditor.css', 'screen');
-					
-					$this->render("staticEditor",array(
-						"new"=>($pagedata == null),
-						"id"=>isset($pagedata->id) ? $pagedata->id : "0",
-						"tag"=>isset($pagedata->tag) ? $pagedata->tag : $page,
-						"title"=>isset($pagedata->title) ? $pagedata->title : "New",
-						"body"=>isset($pagedata->body) ? $pagedata->body : "New Document",
-						"last_modified"=>isset($pagedata->last_modified) ? $pagedata->last_modified : time(),
-					));
-				}else{
-					echo "permission issues";
-				}
-			break;
-			case "error":
-			break;
-			default:
-			break;
-		}
-	}
-
 	/**
 	 * Logs out the current user and redirect to homepage.
 	 */

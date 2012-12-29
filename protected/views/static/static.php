@@ -5,7 +5,7 @@
 				echo $title; 
 				if ($edit){
 					/* Moderator function, requires role "static" */
-					print "<a href='".$this->createURL("home/static",array($tag=>"edit"))."' style='float:right;'>Edit</a>";
+					print "<a href='".$this->createURL("/static/edit/".$tag,array())."' style='float:right;'>Edit</a>";
 				}
 			?>
 		</h1>
