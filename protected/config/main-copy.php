@@ -43,6 +43,8 @@ return array(
 			'showScriptName'=>false,
 			'caseSensitive'=>false,       
 			'rules'=>array(
+			    'home/static/<id:\d+>/>' => 'home/static',
+			
 				'user/settings' => 'user/settings', /* Static pages must be defined here for the User controller*/
 				'user/inbox' => 'user/inbox',
 				'user/filemanager' => 'user/filemanager',
@@ -64,20 +66,12 @@ return array(
 		),
 		'log'=>array(
 			'class'=>'CLogRouter',
-			/*'routes'=>array(
+			'routes'=>array(
 				array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'error, warning',
 				),
-			),*/
-			'routes' => array(
-                array(
-                    'class' => 'ext.phpconsole.PhpConsoleYiiExtension',
-                    'handleErrors' => true,
-                    'handleExceptions' => true,
-                    'basePathToStrip' => dirname($_SERVER['DOCUMENT_ROOT'])
-                )
-            )
+			),
 			
 		),
 	),

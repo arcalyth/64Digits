@@ -13,6 +13,7 @@ Libraries Used
 * http://nodejs.org/
 * http://socket.io/
 * https://github.com/felixge/node-mysql
+* http://www.sceditor.com/
 
 Installation
 ================================
