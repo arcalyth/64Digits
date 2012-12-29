@@ -18,7 +18,10 @@ class AjaxController extends Controller
 		$this->return["success"]=false;
 		
 		if ($user != null && $user->authenticate($_POST['password']) == Users::ERROR_NONE){
-		
+			$user->last_login = time();
+			$user->logins++;
+			$user->save();
+			
 			$this->return["success"]=true;
 			$this->return["data"] = array(
 				array(
@@ -32,5 +35,30 @@ class AjaxController extends Controller
 		Yii::app()->end();		
 		return true;
 	}
+	
+	/*
+		Saves the static documents in the database
+	*/
+	public function actionStatic(){
+		$this->return["success"] = false;
+		$this->return["new"] = false;
 		
+		if ($this->user() && $this->user()->hasRole("static")){
+			$page = StaticPage::model()->findByPK($_POST['id']);
+			
+			if ($page == null){
+				$page = new StaticPage();
+				$this->return["new"] = true;
+			}
+			
+			$page->tag = $_POST['tag'];
+			$page->title = $_POST['title'];
+			$page->body = $_POST['body'];
+			$page->last_modified = time();
+			
+			$this->return["success"] = $page->save();
+		}
+		
+		echo json_encode($this->return);
+	}
 }

@@ -12,6 +12,7 @@ class Notify {
 		Possible constraints:
 		url  : JS regex (Via string.match())
 		user : User ID(s). Either string, number, or array.
+		guest: true/false
 		*****************************
 		PARAMETERS ARE OR'D TOGETHER.
 		*****************************

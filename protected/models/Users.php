@@ -22,6 +22,7 @@ class Users extends CActiveRecord
 {
 
 	public $errorCode;
+	public $roles = null;
 	
 	const ERROR_NONE = 0;
 	const ERROR_USERNAME_INVALID = 1;
@@ -146,6 +147,30 @@ class Users extends CActiveRecord
 			$this->errorCode=self::ERROR_NONE;
 		}
 		return $this->errorCode;
+	}
+	
+	public function roles(){
+		if ($this->roles == null){
+			$this->roles = RolesUsers::model()->findAllByAttributes(array("user_id"=>$this->id));
+		}		
+		return $this->roles;
+	}
+	
+	public function hasRole($checkRole){
+		if ($this->roles == null){
+			$this->roles();
+		}
+		
+		if ($this->roles != null){
+			$roles = $this->roles;
+			
+			foreach ($roles as $role){
+				if ($checkRole == $role->role->name){
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 	
 }

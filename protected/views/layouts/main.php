@@ -16,7 +16,7 @@
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/js/main.js"></script>
 	
 	<script src="<?php echo Yii::app()->request->baseUrl; ?>/node/socket.io/socket.io.js"></script>
-	
+	<script type="text/javascript" src="/64Digits/js/jquery.sceditor.min.js"></script>
 	<script>
 	<?php
 		$path = substr(Yii::app()->request->requestUri,strlen(Yii::app()->request->baseUrl));
@@ -42,9 +42,6 @@
 		console.log(data);
 	  });
 	  
-	  socket.on('location', function (data) {
-		console.log(data);
-	  });
 	</script>
 </head>
 
@@ -93,7 +90,7 @@
 		
 		$.ajax({
 			type: "post",
-			url: "<?php print Yii::app()->request->getUrl(); ?>ajax/login",
+			url: "<?php print Yii::app()->request->baseUrl; ?>/ajax/login",
 			data: {
 					username: u,
 					password: p, 
