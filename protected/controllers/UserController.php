@@ -5,12 +5,15 @@ class UserController extends Controller
 	private $user_page = null;
 	
 	public function beforeAction($action){
+	
 		//If we don't know who the user is, assume it's the logged in user.
 		$_GET['user'] = (isset($_GET['user'])) ? $_GET['user'] : "";
 		
 		if ($_GET['user'] == "" && $this->user()){
 			$_GET['user'] = $this->user()->username;
-		}else{
+		}
+		
+		if ($_GET['user'] == ""){
 			echo "TODO: Render error for user not found, because none was provided and the user is not logged in (1)";
 			return false;
 		}
