@@ -41,6 +41,7 @@ class m121229_024427_roles_and_static_pages extends CDbMigration
 
 	public function down()
 	{
+		echo "Dropping roles, roles_users, and static_page tables... \r\n";
 		$this->dropTable("roles");
 		$this->dropTable("roles_users");
 		$this->dropTable("static_page");

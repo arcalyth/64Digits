@@ -41,4 +41,23 @@ class Controller extends CController {
 		return $this->_user;
 	}
 	
+	public function formatString($format,$values){
+		
+		Yii::import('ext.Time');
+
+		return preg_replace_callback('/%(.)/', function($m) use ($values) {
+			$values_pos = 0;
+			
+			switch ($m[1]) {
+				case 's':
+					return $values[$values_pos];
+				break;
+				case 't':
+				  return (new Time())->timeAgoInWords($values[$values_pos]);
+				case '%':
+				  return '%';
+				default:
+			}
+		}, $format);
+	}
 }
