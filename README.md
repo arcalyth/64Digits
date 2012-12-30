@@ -14,8 +14,17 @@ Libraries Used
 * http://socket.io/
 * https://github.com/felixge/node-mysql
 * http://www.sceditor.com/
+* https://github.com/ajaxorg/ace
 
-Installation
+Quick Install
+================================
+	1) Install Yii Framework
+		Configure the index.php in the main folder to reflect to this Yii install.
+	2) In the main directory:
+		`php install.php`
+		This will request all credentials and apply them to the correct files.
+	
+Long Installation
 ================================
 	1) Install Yii Framework somewhere outside of the repo. 
 		(Recommended to be in ../yii, assuming you're in a public_html folder)
@@ -41,17 +50,6 @@ Installation
 		cp config-copy.js config.js;
 		Add required fields (You'd think there would be a way to not have to do this a dozen times...)
 
-Quick Install (After cloning and setting up Yii)
-================================
-	cd node; npm install; cd ../;
-	cp .htaccess-copy .htaccess;
-	cp protected/config/main-copy.php protected/config/main.php;
-	cp protected/config/console-copy.php protected/config/console.php;
-	cp config-copy.js config.js;
-	**Configure the MySQL credentials in main.php, console.php, and config.js**
-	./protected/yiic migrate up 1
-	cd node; screen; node server.js;
-	
 
 Relevant Documentation
 ================================

@@ -14,15 +14,14 @@ class UserController extends Controller
 		}
 		
 		if ($_GET['user'] == ""){
-			echo "TODO: Render error for user not found, because none was provided and the user is not logged in (1)";
+			throw new CHttpException(404,'The specified user cannot be found.');
 			return false;
 		}
 		
 		$this->user_page = Users::model()->findByAttributes(array("username"=>$_GET['user']));
 		
 		if ($this->user_page == null){
-			//Render error
-			echo "TODO: Render error for user not found (2)";
+			throw new CHttpException(404,'The specified user cannot be found.');
 			return false;
 		}
 		
@@ -47,6 +46,11 @@ class UserController extends Controller
 	}
 	
 	public function actionView(){
+		$this->render('index');
+	}
+	
+	public function actionFilemanager(){
+		print "FM";
 		$this->render('index');
 	}
 	
