@@ -26,6 +26,7 @@ class m121225_204253_create_user_table extends CDbMigration
 
 	public function down()
 	{
+		echo "Dropping user tables... \r\n";
 		$this->dropTable("users");
 		return false;
 	}

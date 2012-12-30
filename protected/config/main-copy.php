@@ -45,16 +45,14 @@ return array(
 			'rules'=>array(
 			    'home/static/<id:\d+>/>' => 'home/static',
 			
-				'user/settings' => 'user/settings', /* Static pages must be defined here for the User controller*/
-				'user/inbox' => 'user/inbox',
-				'user/filemanager' => 'user/filemanager',
-				'user/<action>/*' => 'user/view/user/<action>', /*Redirect for a user page.*/
+				'user/<user:\w+>/<action:\w+>' => 'user/<action>', /*Redirect for a user page.*/
+				'user/<user:\w+>' => 'user/view', /*Redirect for a user page.*/
 				
 				
 				'static/index' => 'static/index',
 				'static/view/<page:\w+>' => 'static/view',
 				'static/edit/<page:\w+>' => 'static/edit',
-				'static/<page:\w+>' => 'static/view', /*Redirect for a user page.*/
+				'static/<page:\w+>' => 'static/view', /*Redirect for static pages.*/
 			)
 		),
 		
