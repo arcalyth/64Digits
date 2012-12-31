@@ -18,11 +18,12 @@ Libraries Used
 
 Quick Install
 ================================
-	1) Install Yii Framework
-		Configure the index.php in the main folder to reflect to this Yii install.
-	2) In the main directory:
-		`php install.php`
-		This will request all credentials and apply them to the correct files.
+	1) In the main directory: `php install.php` from command line.
+		This will:
+		* Download and install Yii Framework (Latest copy)
+		* Request all MySQL credentials and apply them to the correct files.
+		* Configure the node to install it's packages / dependencies
+		* Migrate update the MySQL database.
 	
 Long Installation
 ================================

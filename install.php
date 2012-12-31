@@ -176,6 +176,9 @@ if (!$error){
 	}
 }
 
+system("mkdir ../yii");
+system("git clone https://github.com/yiisoft/yii.git ../yii");
+
 chdir("node");
 	system ("npm install;");
 chdir("../");
