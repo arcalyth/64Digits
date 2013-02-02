@@ -4,7 +4,8 @@ Dependencies
 * Node 6.8.0+
 * MySQL 5.5.23+
 * Yii v1.1.12
-
+* Git (cli-accessible) (Any version should work)
+* Grep (cli-accessible) (Any version should work)
 
 Libraries Used
 ================================
