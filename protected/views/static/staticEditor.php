@@ -29,7 +29,7 @@ $(document).ready(function() {
 		$("#saveSpinner").html("<img src='<?php print Yii::app()->request->baseUrl; ?>/images/spinner.gif' width='18px' height='18px' />");
 		$.ajax({
 			type: "post",
-			url: "<?php print Yii::app()->request->baseUrl; ?>/ajax/static",
+			url: "<?php print Yii::app()->request->baseUrl; ?>/ajax/static/save",
 			data: {
 					id: "<?php echo $id; ?>",
 					tag: $("#staticTag").val(),

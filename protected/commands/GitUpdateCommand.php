@@ -4,7 +4,8 @@ class GitUpdateCommand extends CConsoleCommand
 {
 	public function run($args)
 	{
-	
+		$basedir = dirname(__FILE__)."/..";
+		
 		$git = array();
 		$git['tag'] = exec("git describe"); //Gets current tag. This is our version number.
 		$git['date'] = exec("git log -1 --format=\"%cd\""); //Gets current commit date. 
@@ -12,8 +13,9 @@ class GitUpdateCommand extends CConsoleCommand
 
 		//Needs to be done seperately, due to a multi-line command.
 		
-		exec("git log -5 > gitlog.temp.txt"); //Gets last 5 commits from log and post to file
-		$tmpCommits = explode("\n\n",file_get_contents("gitlog.temp.txt"));
+		exec("git log -5 > ".$basedir."/gitlog.temp.txt"); //Gets last 5 commits from log and post to file
+		$tmpCommits = explode("\n\n",file_get_contents($basedir."/gitlog.temp.txt"));
+		unlink($basedir."/gitlog.temp.txt");
 		
 		$commits = array();
 		$commitIndex = -1; //Start at -1 to make things easier, since there are more than one \n\n that I need to capture per commit.
@@ -37,13 +39,12 @@ class GitUpdateCommand extends CConsoleCommand
 		
 		
 		$git['commits'] = $commits;
-		unlink("gitlog.temp.txt");
 		
-		$success = file_put_contents("data/git.json",json_encode($git,JSON_PRETTY_PRINT));
+		$success = file_put_contents($basedir."/data/git.json",json_encode($git,JSON_PRETTY_PRINT));
 		if ($success){
-			echo "Successfully updated: data.git.json\r\n";
+			echo "Successfully updated: ".$basedir."/data.git.json\r\n";
 		}else{
-			echo "Failed to write file: data.git.json\r\n";
+			echo "Failed to write file: ".$basedir."/data.git.json\r\n";
 		}
 	}
 }

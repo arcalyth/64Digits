@@ -12,3 +12,4 @@ protected/data/*.db
 protected/tests/report/*
 protected/config/main.php
 protected/config/console.php
+protected/data/git.json

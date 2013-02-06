@@ -28,6 +28,7 @@ return array(
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('69.133.201.176'),
 		),
+		'ajax'
 		
 	),
 

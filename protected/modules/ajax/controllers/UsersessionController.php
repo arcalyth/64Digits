@@ -1,6 +1,6 @@
 <?php
 
-class AjaxController extends Controller
+class UsersessionController extends Controller
 {
 	private $return;
 	
@@ -34,31 +34,5 @@ class AjaxController extends Controller
 		echo json_encode($this->return);
 		Yii::app()->end();		
 		return true;
-	}
-	
-	/*
-		Saves the static documents in the database
-	*/
-	public function actionStatic(){
-		$this->return["success"] = false;
-		$this->return["new"] = false;
-		
-		if ($this->user() && $this->user()->hasRole("static")){
-			$page = StaticPage::model()->findByPK($_POST['id']);
-			
-			if ($page == null){
-				$page = new StaticPage();
-				$this->return["new"] = true;
-			}
-			
-			$page->tag = $_POST['tag'];
-			$page->title = $_POST['title'];
-			$page->body = $_POST['body'];
-			$page->last_modified = time();
-			
-			$this->return["success"] = $page->save();
-		}
-		
-		echo json_encode($this->return);
 	}
 }

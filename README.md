@@ -52,6 +52,15 @@ Long Installation
 		cp config-copy.js config.js;
 		Add required fields (You'd think there would be a way to not have to do this a dozen times...)
 
+Things To Know (Or your code / pull request will be rejected)
+================================
+* WRITE REAL COMMIT MESSAGES. If you don't, your pull request will be rejected! If you can take the time to code, you can take the time to write a commit message to let us know what you changed.
+* Respect the King and Dukes. Your code can only be pulled by these people. You can find their contact information by looking in MONARCHY.md
+* Your commits must use the user.name of your 64Digits account and user.email of an email on file with 64Digits. 
+* Do not try to impersonate another person. 
+* You must make a GitHub account <--> 64Digits account relationship before submitting a pull request. You can do this by contacting the King, Queen, or any Duke. A list of these can be found in MONARCHY.md
+* Never ever (ever) expire data via a PHP script that is ran when the first user past the expiration occurs. Not only is this considered bad taste because it causes that user to have to wait before their page loads, but CRON JOBS WERE DESIGNED FOR A REASON! That said, create a command in protected/commands/ and add it to the crontab.sh file.
+* Files that need to be ran should never have to be ran from a specific place to work. Use dirname(__FILE__) to escape this issue.
 
 Relevant Documentation
 ================================
