@@ -3,6 +3,7 @@
 		<h1 style='width: 100%;'>
 			<?php 
 				echo $title; 
+				
 				if ($edit){
 					/* Moderator function, requires role "static" */
 					print "<a href='".$this->createURL("/static/edit/".$tag,array())."' style='float:right;'>Edit</a>";
