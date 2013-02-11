@@ -187,7 +187,7 @@ system('./protected/yiic migrate up 9001');
 
 echo "=====================================================\r\n";
 echo "\r\n";
-echo "COMPLETE! Optionally, start the node.js script with `screen`, then `cd node; node server.js`\r\n\r\n";
+echo "COMPLETE! Optionally, start the node.js script with `screen`, then `cd node; node 64_bouncer.js`\r\n\r\n";
 echo "=====================================================";
 
 ?>
