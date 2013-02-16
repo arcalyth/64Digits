@@ -173,4 +173,28 @@ class Users extends CActiveRecord
 		return false;
 	}
 	
+	/*
+	* Tampering with this function or any functionality throughout the site related to bans is 
+	* grounds for removal from staff and banning.
+	*/
+	public function isBanned(){
+		$bans = UserPrison::model()->findAllByPK($this->id);
+		foreach ($bans as $ban){
+			if ($ban->begins < time() && time() < ($ban->begins+$ban->length)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public function getBanned(){
+		$bans = UserPrison::model()->findAllByPK($this->id);
+		foreach ($bans as $ban){
+			if ($ban->begins < time() && time() < ($ban->begins+$ban->length)){
+				return $ban;
+			}
+		}
+		return null;
+	}
+	
 }

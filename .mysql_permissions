@@ -1,0 +1,20 @@
+Obviously, you will need to change the database name and the user/address if you're on another server.
+This is designed so that you can quickly include your tables in here that you made for permissions. This should be refreshed on every git update.
+
+
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`blogs` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`blog_comments` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`files` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`folders` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`games` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`groups` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`group_members` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`roles` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`roles_users` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`static_page` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`tbl_migration` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`users` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`user_links` TO  '64digits_v4'@'localhost';
+GRANT SELECT , INSERT , UPDATE , DELETE , CREATE , REFERENCES , SHOW VIEW ON  `64digits_v4_db`.`user_settings` TO  '64digits_v4'@'localhost';
+
+GRANT SELECT , INSERT ON  `64digits_v4_db`.`user_prison` TO  '64digits_v4'@'localhost';
