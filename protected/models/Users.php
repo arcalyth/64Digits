@@ -16,11 +16,21 @@
  * @property string $location
  * @property integer $referrer
  * @property string $avatar_location
- * @property string $banned
+ *
+ * The followings are the available model relations:
+ * @property Files[] $files
+ * @property Folders[] $folders
+ * @property Games[] $games
+ * @property GroupMembers[] $groupMembers
+ * @property Groups[] $groups
+ * @property RolesUsers[] $rolesUsers
+ * @property UserLinks[] $userLinks
+ * @property UserPrison[] $userPrisons
+ * @property UserPrison[] $userPrisons1
+ * @property UserSettings $userSettings
  */
 class Users extends CActiveRecord
 {
-
 	public $errorCode;
 	public $roles = null;
 	
@@ -55,18 +65,18 @@ class Users extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('username, email, password, join_date, banned', 'required'),
+			array('username, email, password, join_date', 'required'),
 			array('referrer', 'numerical', 'integerOnly'=>true),
 			array('username', 'length', 'max'=>32),
 			array('email', 'length', 'max'=>254),
 			array('password', 'length', 'max'=>64),
-			array('logins, last_login, birthday, join_date, banned', 'length', 'max'=>10),
+			array('logins, last_login, birthday, join_date', 'length', 'max'=>10),
 			array('gender', 'length', 'max'=>1),
 			array('location', 'length', 'max'=>200),
 			array('avatar_location', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, username, email, password, logins, last_login, gender, birthday, join_date, location, referrer, avatar_location, banned', 'safe', 'on'=>'search'),
+			array('id, username, email, password, logins, last_login, gender, birthday, join_date, location, referrer, avatar_location', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,6 +88,16 @@ class Users extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'files' => array(self::HAS_MANY, 'Files', 'user'),
+			'folders' => array(self::HAS_MANY, 'Folders', 'user'),
+			'games' => array(self::HAS_MANY, 'Games', 'creator_id'),
+			'groupMembers' => array(self::HAS_MANY, 'GroupMembers', 'user_id'),
+			'groups' => array(self::HAS_MANY, 'Groups', 'primary_owner'),
+			'rolesUsers' => array(self::HAS_MANY, 'RolesUsers', 'user_id'),
+			'userLinks' => array(self::HAS_MANY, 'UserLinks', 'user_id'),
+			'userPrisons' => array(self::HAS_MANY, 'UserPrison', 'userid'),
+			'userPrisons1' => array(self::HAS_MANY, 'UserPrison', 'issuer'),
+			'userSettings' => array(self::HAS_ONE, 'UserSettings', 'user_id'),
 		);
 	}
 
@@ -99,7 +119,6 @@ class Users extends CActiveRecord
 			'location' => 'Location',
 			'referrer' => 'Referrer',
 			'avatar_location' => 'Avatar Location',
-			'banned' => 'Banned',
 		);
 	}
 
@@ -126,20 +145,20 @@ class Users extends CActiveRecord
 		$criteria->compare('location',$this->location,true);
 		$criteria->compare('referrer',$this->referrer);
 		$criteria->compare('avatar_location',$this->avatar_location,true);
-		$criteria->compare('banned',$this->banned,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 	
+
 	public function authenticate( $password, $dontHash = false){
 	
 		if($dontHash == true && $password != $this->password ){
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;		
 		}else if($dontHash == false && hash("sha256",$password.$this->join_date) != $this->password ){
 			$this->errorCode=self::ERROR_PASSWORD_INVALID;
-		}else if ($this->banned != 0){
+		}else if ($this->isBanned()){
 			$this->errorCode=self::ERROR_USER_BANNED;
 		}else{
 			Yii::app()->request->cookies['uid'] = new CHttpCookie('uid', $this->id);
@@ -157,6 +176,10 @@ class Users extends CActiveRecord
 	}
 	
 	public function hasRole($checkRole){
+		//All role names are lower case.
+		$checkRole = strtolower($checkRole);
+		
+		//If this user model hasn't had its roles fetched, fetch them.
 		if ($this->roles == null){
 			$this->roles();
 		}
@@ -165,6 +188,11 @@ class Users extends CActiveRecord
 			$roles = $this->roles;
 			
 			foreach ($roles as $role){
+				//Since admins can do everything, this flag is for them.
+				if ($role->role->name == "admin"){
+					return true;
+				}
+				
 				if ($checkRole == $role->role->name){
 					return true;
 				}
@@ -178,13 +206,7 @@ class Users extends CActiveRecord
 	* grounds for removal from staff and banning.
 	*/
 	public function isBanned(){
-		$bans = UserPrison::model()->findAllByPK($this->id);
-		foreach ($bans as $ban){
-			if ($ban->begins < time() && time() < ($ban->begins+$ban->length)){
-				return true;
-			}
-		}
-		return false;
+		return $this->getBanned() != null;
 	}
 	
 	public function getBanned(){
@@ -196,5 +218,4 @@ class Users extends CActiveRecord
 		}
 		return null;
 	}
-	
 }

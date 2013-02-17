@@ -1,0 +1,16 @@
+{
+    "users":
+    [
+        {
+            "nick":"chiken",
+            "priv":"v",
+            "idletime":35
+        },
+        {
+            "nick":"sirxemic",
+            "priv":"h",
+            "idletime":109
+        }
+    ],
+    "lastupdate": 100432939
+}

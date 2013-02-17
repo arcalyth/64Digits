@@ -9,7 +9,7 @@
 	
 	   <textarea id = "editor" rows="30"  style=' display: block; width: 100%'>
 	       <?php
-	           echo $body;
+	           echo $content;
 	       ?>
 	   </textarea>
     	<input type="button" value="Save" id="saveStatic" style='float: left;'/><div id="saveSpinner" style="padding: 2px; padding-left: 10px; display: block;"></div>
@@ -34,7 +34,7 @@ $(document).ready(function() {
 					id: "<?php echo $id; ?>",
 					tag: $("#staticTag").val(),
 					title: $("#staticTitle").val(),
-					body: $("#editor").data("sceditor").val()
+					content: $("#editor").data("sceditor").val()
 				},
 			success: function(data){
 				data = jQuery.parseJSON(data);

@@ -17,6 +17,10 @@ class StaticController extends Controller
 		$page =  $_GET['page'];
 		$pagedata = StaticPage::model()->findByAttributes(array("tag"=>$page));
 		if ($pagedata == null){
+			/*This page doesn't exist, but if we have `static` permissions
+			* Make it so that we have the options to "edit" it (which is really create)
+			* Otherwise, redirect to the index page.
+			*/
 			if ($this->user() && $this->user()->hasRole("static")){
 				$this->actionEdit();
 			}else{
@@ -27,15 +31,15 @@ class StaticController extends Controller
 				array(
 					"tag"=>$pagedata->tag,
 					"title"=>$pagedata->title,
-					"body"=>$pagedata->body,
-					"last_modified"=>$pagedata->last_modified,
-					"edit" => ($this->user() && $this->user()->hasRole("static"))
+					"content"=>$pagedata->content,
+					"last_modified"=>$pagedata->modification_date,
+					"edit_permissions" => ($this->user() && $this->user()->hasRole("static"))
 				));
 		}
 	}
 	
 	public function actionEdit(){
-		$page =  $_GET['page'];
+		$page =  $_GET['page']; 
 		$pagedata = StaticPage::model()->findByAttributes(array("tag"=>$page));
 		
 		if ($this->user() && $this->user()->hasRole("static")){
@@ -47,8 +51,8 @@ class StaticController extends Controller
 				"id"=>isset($pagedata->id) ? $pagedata->id : "0",
 				"tag"=>isset($pagedata->tag) ? $pagedata->tag : $page,
 				"title"=>isset($pagedata->title) ? $pagedata->title : "New",
-				"body"=>isset($pagedata->body) ? $pagedata->body : "New Document",
-				"last_modified"=>isset($pagedata->last_modified) ? $pagedata->last_modified : time(),
+				"content"=>isset($pagedata->content) ? $pagedata->content : "New Document",
+				"last_modified"=>isset($pagedata->modification_date) ? $pagedata->modification_date : time(),
 			));
 		}else{
 			echo "permission issues";

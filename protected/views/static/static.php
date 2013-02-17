@@ -4,7 +4,7 @@
 			<?php 
 				echo $title; 
 				
-				if ($edit){
+				if ($edit_permissions){
 					/* Moderator function, requires role "static" */
 					print "<a href='".$this->createURL("/static/edit/".$tag,array())."' style='float:right;'>Edit</a>";
 				}
@@ -14,7 +14,7 @@
 	<div class="section-content">
     	<?php
     	   
-    	   echo $body;
+    	   echo $content;
 		   echo "<p style='font-size: 8pt; color: #414141; text-align:right;font-style:italic;'>Last Modified On: ".date("F j, Y, g:i a",$last_modified)."</p>";
 		?>
 	</div>
