@@ -25,7 +25,7 @@ class Controller extends CController {
 
 	public function user(){
 		if ($this->_user == null){
-			$this->_user = StaticMethods::user();
+			$this->_user = Session::user();
 			if ($this->_user == null){
 				$this->_isGuest = true;
 			}else{

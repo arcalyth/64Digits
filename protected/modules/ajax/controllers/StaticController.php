@@ -33,6 +33,10 @@ class StaticController extends Controller
 			$page->content = $_POST['content'];
 			$page->last_modified_user_id = $this->user()->id;
 			
+			$page->group = ($_POST['group'] != "0") ? $_POST['group'] : null;
+			$page->category = $_POST['category'];
+			$page->visible = $_POST['visible'];
+			
 			$this->return["success"] = $page->save();
 			$this->return["errors"] = $page->getErrors();
 		}

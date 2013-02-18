@@ -16,6 +16,7 @@
  * @property integer $pinned
  *
  * The followings are the available model relations:
+ * @property HistoricalBlogComments[] $historicalBlogComments
  * @property HistoricalBlogs[] $historicalBlogs
  */
 class Blogs extends CActiveRecord
@@ -64,6 +65,7 @@ class Blogs extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'historicalBlogComments' => array(self::HAS_MANY, 'HistoricalBlogComments', 'blog_id'),
 			'historicalBlogs' => array(self::HAS_MANY, 'HistoricalBlogs', 'blog_id'),
 		);
 	}
@@ -112,8 +114,8 @@ class Blogs extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
-	}	
-	
+	}
+
 	//Handle historical saving, and auto populate fields that we don't want to bother with.
 	public function beforeSafe($event){
 		if ($this->isNewRecord){
@@ -133,16 +135,16 @@ class Blogs extends CActiveRecord
 				
 			//Transfer this object into a historical version.
 			$historicalEntry = new HistoricalBlogs;
-			$historicalEntry->title = $self->title;
-			$historicalEntry->pinned = $self->pinned;
-			$historicalEntry->deleted = $self->deleted;
 			$historicalEntry->blog_id = $self->id;
-			$historicalEntry->content = $self->content;
-			$historicalEntry->author_id = $self->author_id;
-			$historicalEntry->creation_date = $self->creation_date;
-			$historicalEntry->modification_date = $self->modification_date;
-			$historicalEntry->modification_count = $self->modification_count;
-			$historicalEntry->last_modified_user_id = $self->last_modified_user_id;
+			
+			//Transfer attributes `intelligently`
+			$attributes = array_keys($this->attributeLabels());
+			foreach ($attributes as $attribute){
+				if (strtolower($attribute) != "id"){
+					$historicalEntry->$attribute = $self->$attribute;
+				}
+			}
+			
 			$historicalEntry->save();
 		}
 		return parent::beforeSave();

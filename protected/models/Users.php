@@ -201,6 +201,36 @@ class Users extends CActiveRecord
 		return false;
 	}
 	
+	public function groups(){
+		if ($this->groups == null){
+			$this->groups = array();
+			
+			$groups = GroupMembers::model()->findAllByAttributes(array("user_id"=>$this->id));
+			foreach ($groups as $group){
+				$this->groups[] = Groups::model()->findByPK($group->group_id);
+			}
+		}		
+		return $this->groups;
+	}
+	
+	public function isInGroupByName($name){
+		foreach ($this->groups as $group){
+			if ($group->name == $name){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public function isInGroupByID($id){
+		foreach ($this->groups as $group){
+			if ($group->id == $id){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	/*
 	* Tampering with this function or any functionality throughout the site related to bans is 
 	* grounds for removal from staff and banning.

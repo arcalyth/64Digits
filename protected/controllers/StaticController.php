@@ -7,8 +7,8 @@ class StaticController extends Controller
 	
 		$criteria = new CDbCriteria();
 		$criteria->order = "title ASC";
-	
-		$pagedata = StaticPage::model()->findAll($criteria);
+	 
+		$pagedata = StaticPage::model()->findAllByAttributes(array("visible"=>true), $criteria);
 		$this->render("index",array("pages"=>$pagedata));
 	
 	}
@@ -48,11 +48,14 @@ class StaticController extends Controller
 			
 			$this->render("staticEditor",array(
 				"new"=>($pagedata == null),
-				"id"=>isset($pagedata->id) ? $pagedata->id : "0",
-				"tag"=>isset($pagedata->tag) ? $pagedata->tag : $page,
-				"title"=>isset($pagedata->title) ? $pagedata->title : "New",
-				"content"=>isset($pagedata->content) ? $pagedata->content : "New Document",
-				"last_modified"=>isset($pagedata->modification_date) ? $pagedata->modification_date : time(),
+				"pageid"=>isset($pagedata->id) ? $pagedata->id : "0",
+				"pagetag"=>isset($pagedata->tag) ? $pagedata->tag : $page,
+				"pagetitle"=>isset($pagedata->title) ? $pagedata->title : "New",
+				"pagecontent"=>isset($pagedata->content) ? $pagedata->content : "New Document",
+				"pagecategory"=>isset($pagedata->category) ? $pagedata->category : 0,
+				"pagegroup"=>isset($pagedata->group) ? $pagedata->group : "0",
+				"pagevisible"=>isset($pagedata->visible) ? (string)$pagedata->visible : "1",
+				"pagelast_modified"=>isset($pagedata->modification_date) ? $pagedata->modification_date : time(),
 			));
 		}else{
 			echo "permission issues";

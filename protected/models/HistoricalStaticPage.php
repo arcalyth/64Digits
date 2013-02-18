@@ -14,6 +14,16 @@
  * @property string $last_modified_user_id
  * @property string $author_id
  * @property string $creation_date
+ * @property integer $visible
+ * @property string $group
+ * @property string $category
+ *
+ * The followings are the available model relations:
+ * @property StaticPageCategories $category0
+ * @property StaticPage $staticPage
+ * @property Users $lastModifiedUser
+ * @property Users $author
+ * @property Groups $group0
  */
 class HistoricalStaticPage extends CActiveRecord
 {
@@ -43,13 +53,14 @@ class HistoricalStaticPage extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('static_page_id, tag, title, content, modification_count, modification_date, author_id, creation_date', 'required'),
-			array('static_page_id, modification_count, modification_date, last_modified_user_id, author_id, creation_date', 'length', 'max'=>11),
+			array('static_page_id, tag, title, content, author_id, category', 'required'),
+			array('visible', 'numerical', 'integerOnly'=>true),
+			array('static_page_id, modification_count, modification_date, last_modified_user_id, author_id, creation_date, group, category', 'length', 'max'=>11),
 			array('tag', 'length', 'max'=>32),
 			array('title', 'length', 'max'=>64),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, static_page_id, tag, title, content, modification_count, modification_date, last_modified_user_id, author_id, creation_date', 'safe', 'on'=>'search'),
+			array('id, static_page_id, tag, title, content, modification_count, modification_date, last_modified_user_id, author_id, creation_date, visible, group, category', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,6 +72,11 @@ class HistoricalStaticPage extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'category0' => array(self::BELONGS_TO, 'StaticPageCategories', 'category'),
+			'staticPage' => array(self::BELONGS_TO, 'StaticPage', 'static_page_id'),
+			'lastModifiedUser' => array(self::BELONGS_TO, 'Users', 'last_modified_user_id'),
+			'author' => array(self::BELONGS_TO, 'Users', 'author_id'),
+			'group0' => array(self::BELONGS_TO, 'Groups', 'group'),
 		);
 	}
 
@@ -80,6 +96,9 @@ class HistoricalStaticPage extends CActiveRecord
 			'last_modified_user_id' => 'Last Modified User',
 			'author_id' => 'Author',
 			'creation_date' => 'Creation Date',
+			'visible' => 'visible',
+			'group' => 'Group',
+			'category' => 'Category',
 		);
 	}
 
@@ -104,6 +123,9 @@ class HistoricalStaticPage extends CActiveRecord
 		$criteria->compare('last_modified_user_id',$this->last_modified_user_id,true);
 		$criteria->compare('author_id',$this->author_id,true);
 		$criteria->compare('creation_date',$this->creation_date,true);
+		$criteria->compare('visible',$this->visible);
+		$criteria->compare('group',$this->group,true);
+		$criteria->compare('category',$this->category,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
