@@ -19,8 +19,15 @@ class StaticController extends Controller
 		$this->return["success"] = false;
 		$this->return["new"] = false;
 		
-		if ($this->user() && $this->user()->hasRole("static")){
-			$page = StaticPage::model()->findByAttributes(array("tag"=>$_POST['tag']));
+		$page = StaticPage::model()->findByAttributes(array("tag"=>$_POST['tag']));
+		
+		/*
+		* I have not confirmed if this logic actually works or not. It should do:
+		* Ensure logged in ($this->user())
+		* Check if they're a mod of static pages, OR
+		* 		If the page isn't new (to stop non-object errors), and they're in the pages group.
+		*/
+		if ($this->user() && ($this->user()->hasRole("static") || ($page != null && $this->user()->isInGroupByID($page->group)))){
 			
 			if ($page == null){
 				$page = new StaticPage();

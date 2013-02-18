@@ -21,7 +21,7 @@ class StaticController extends Controller
 			* Make it so that we have the options to "edit" it (which is really create)
 			* Otherwise, redirect to the index page.
 			*/
-			if ($this->user() && $this->user()->hasRole("static")){
+			if ($this->user() && ($this->user()->hasRole("static") || $this->user()->isInGroupByID($pagedata->group))){
 				$this->actionEdit();
 			}else{
 				$this->actionIndex();
@@ -33,7 +33,7 @@ class StaticController extends Controller
 					"title"=>$pagedata->title,
 					"content"=>$pagedata->content,
 					"last_modified"=>$pagedata->modification_date,
-					"edit_permissions" => ($this->user() && $this->user()->hasRole("static"))
+					"edit_permissions" => ($this->user() && ($this->user()->hasRole("static") || $this->user()->isInGroupByID($pagedata->group)))
 				));
 		}
 	}
@@ -42,7 +42,7 @@ class StaticController extends Controller
 		$page =  $_GET['page']; 
 		$pagedata = StaticPage::model()->findByAttributes(array("tag"=>$page));
 		
-		if ($this->user() && $this->user()->hasRole("static")){
+		if ($this->user() && ($this->user()->hasRole("static") || $this->user()->isInGroupByID($pagedata->group))){
 			Yii::app()->getClientScript()->registerCssFile(yii::app()->request->baseUrl.'/css/jquery.sceditor.default.min.css', 'screen');
 			Yii::app()->getClientScript()->registerCssFile(yii::app()->request->baseUrl.'/css/sceditor.css', 'screen');
 			
